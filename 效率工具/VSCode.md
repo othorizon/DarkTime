@@ -49,7 +49,7 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 
 
 ### 首选项-键盘快捷方式
-> 键盘快捷键设置也是json格式，与系统设置原理一样，默认打开是图形化见面，但是可以进入`高级自定义`修改`keybindings.json`文件
+> 键盘快捷键设置也是json格式，与系统设置原理一样，默认打开是图形化界面，但是可以进入`高级自定义`修改`keybindings.json`文件
 > 这里除了定义系统按键也可以定义插件（json设置中以extesion前缀）的按键设置，当然 插件的快捷键也可以在插件的首页里进行配置更为清晰
 
 ``` json

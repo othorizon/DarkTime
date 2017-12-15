@@ -1,4 +1,4 @@
-package com.ksyun.bossv2.common.utils.excel;
+package com.rizon.common.utils.excel;
 
 /**
  * Created by Rizon on 2017/11/15.

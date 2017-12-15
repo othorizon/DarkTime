@@ -1,4 +1,4 @@
-package com.ksyun.bossv2.common.utils.excel;
+package com.rizon.common.utils.excel;
 
 import org.apache.commons.collections4.map.HashedMap;
 import org.apache.commons.lang3.StringUtils;

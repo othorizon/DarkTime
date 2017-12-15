@@ -1,4 +1,4 @@
-package com.ksyun.bossv2.common.utils.excel;
+package com.rizon.common.utils.excel;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.springframework.web.servlet.view.document.AbstractXlsxStreamingView;

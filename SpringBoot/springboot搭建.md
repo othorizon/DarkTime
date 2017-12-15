@@ -25,7 +25,7 @@
 
 ``` java
 @Configuration
-@MapperScan(basePackages ={"com.ksyun.rule.converter.dao.boss"},sqlSessionFactoryRef = "bossSqlSessionFactory")
+@MapperScan(basePackages ={"com.rule.converter.dao.boss"},sqlSessionFactoryRef = "bossSqlSessionFactory")
 public class BossDataSourceConfig {
     @Primary
     @Bean(name = "bossDataSource")
@@ -46,8 +46,8 @@ public class BossDataSourceConfig {
         SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
         factoryBean.setDataSource(dataSource);
         factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources("classpath:com/ksyun/rule/converter/dao/boss/**/*.xml"));
-//        factoryBean.setTypeAliasesPackage("com.ksc.dc.es.report.pojo.main");
+                .getResources("classpath:com/rule/converter/dao/boss/**/*.xml"));
+//        factoryBean.setTypeAliasesPackage("com.dc.es.report.pojo.main");
         return factoryBean.getObject();
     }
 }
@@ -69,15 +69,15 @@ echo branch:$branch
 mvn clean package -Dmaven.test.skip=true -P${profile} -U
 
 
-ssh 10.4.25.68 "pkill -9 -f ${APP_HOME}" || echo noProcess
+ssh 10.0.0.0 "pkill -9 -f ${APP_HOME}" || echo noProcess
 
-ssh 10.4.25.68 "rm -f ${APP_HOME}/convert.jar"
+ssh 10.0.0.0 "rm -f ${APP_HOME}/convert.jar"
 
-scp target/convert.jar 10.4.25.68:$APP_HOME/convert.jar
+scp target/convert.jar 10.0.0.0:$APP_HOME/convert.jar
 
-ssh 10.4.25.68 "sh -l ${APP_HOME}/restart.sh"
+ssh 10.0.0.0 "sh -l ${APP_HOME}/restart.sh"
 #下面这个方案行不通无论是否使用nohup都会在ssh断开后结束程序
-#ssh 10.4.25.68 "java -jar ${APP_HOME}/convert.jar --server.port=9530 > /dev/null 2>&1 &"
+#ssh 10.0.0.0 "java -jar ${APP_HOME}/convert.jar --server.port=9530 > /dev/null 2>&1 &"
 
 ```
 

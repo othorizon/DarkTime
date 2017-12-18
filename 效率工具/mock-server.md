@@ -5,6 +5,7 @@
 ## 简单使用 （Standalone Moco Runner）
 
 [Qucik Start 官方说明](https://github.com/dreamhead/moco#quick-start)
+[Standalone Moco Runner Download](http://central.maven.org/maven2/com/github/dreamhead/moco-runner/0.11.1/moco-runner-0.11.1-standalone.jar)
 
 ### 启动
 

@@ -51,3 +51,13 @@ echo dir1/ dir2/ dir3/ |xargs -n 1 -I '{}' echo {}cp.txt
 ```
 
 ----
+
+## find
+
+### 批量文件末尾追加内容
+
+网上的一些方法，使用`sed`等命令，我在mac上实验总是失败，于是用了这个简单的方案
+
+```base
+find . -name "*.sql"|xargs -I "{}" echo "echo "LIMIT 10" >> {}"|sh
+```

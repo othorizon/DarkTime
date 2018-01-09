@@ -61,3 +61,12 @@ echo dir1/ dir2/ dir3/ |xargs -n 1 -I '{}' echo {}cp.txt
 ```base
 find . -name "*.sql"|xargs -I "{}" echo "echo "LIMIT 10" >> {}"|sh
 ```
+
+### 批量修改文件名称
+
+```bash
+find .  -name "CDN-流量-流量-今日用量数据-TOP20.sql"|awk -F'/CDN-' '{print $1}' |xargs -I "{}" mv {}/CDN-流量-流量-今日用量数据-TOP20.sql {}/CDN-流量-今日用量数据-TOP20.sql
+
+#rename 默认在mac系统上没有，可以HomeBrew安装一下
+rename 's/old/new/' *.files
+```

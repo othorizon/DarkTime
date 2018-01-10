@@ -54,11 +54,46 @@ echo dir1/ dir2/ dir3/ |xargs -n 1 -I '{}' echo {}cp.txt
 
 ## find
 
-### 批量文件末尾追加内容
+### 批量向文件追加内容
 
-网上的一些方法，使用`sed`等命令，我在mac上实验总是失败，于是用了这个简单的方案
+参考:
+[sed extra characters after \ at the end of a command](https://www.cnblogs.com/meitian/p/5907562.html)
+[evernote-sed extra characters after \ at the end of a command](https://app.yinxiang.com/shard/s9/nl/679699/add0426b-388c-4da0-a910-14340b3eae75/)
 
-```base
+#### 批量文件头追加内容
+
+```bash
+find . -name "*.txt" |xargs -n 1 -I "{}" sed -i "" '1i\
+insert new line\
+new line' {}
+find . -name "*.txt" |xargs -n 1 -I "{}" sed -i ""  "1i\\
+insert new line\\
+new line" {}
+```
+
+>mac中，在追加内容前要换行，直接使用`i\insert new line`是会报错的，表示换行符的时候也通过换行来表示
+
+示例：
+
+```bash {cmd=true}
+# sed后面可以跟 i参数直接替换文本 `sed -i ""`
+
+find . -name "test.txt" |xargs -n 1 -I "{}" sed '1i\
+new line1\
+new line2' {}
+
+echo "------"
+
+find . -name "test.txt" |xargs -n 1 -I "{}" sed  "1i\\
+new line1\\
+new line2" {}
+```
+
+#### 批量文件末尾追加内容
+
+网上的一些方法，使用`sed`等命令，在mac上存在`\`换行符识别较麻烦，于是用了这个简单的方案
+
+```bash
 find . -name "*.sql"|xargs -I "{}" echo "echo "LIMIT 10" >> {}"|sh
 ```
 

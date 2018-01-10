@@ -65,7 +65,11 @@ find . -name "*.sql"|xargs -I "{}" echo "echo "LIMIT 10" >> {}"|sh
 ### 批量修改文件名称
 
 ```bash
+<<<<<<< HEAD
 find .  -name "CDN-流量-流量-今日用量数据-TOP20.sql"|awk -F'/CDN-' '{print $1}' |xargs -I "{}" mv {}/CDN-流量-流量-今日用量数据-TOP20.sql {}/CDN-流量-今日用量数据-TOP20.sql
+=======
+find .  -name "CDN-流量-流量-今日用量数据-TOP20.sql"|awk -F'/find .  -name "CDN-流量-流量-今日用量数据-TOP20.sql"|awk -F'/CDN-' '{print $1}' |xargs -I "{}" mv {}/CDN-流量-流量-今日用量数据-TOP20.sql {}/CDN-流量-今日用量数据-TOP20.sql
+>>>>>>> 38371e4681e8b3a7cf3c8525cccb3aa469ded4d8
 
 #rename 默认在mac系统上没有，可以HomeBrew安装一下
 rename 's/old/new/' *.files

@@ -71,6 +71,9 @@ insert new line\\
 new line" {}
 ```
 
+>mac中，在追加内容前要换行，直接使用`i\insert new line`是会报错的，表示换行符的时候也通过换行来表示。
+sed命令向文件内追加内容与正则替换不同的是，无法直接批量操作多个文件，因此要借助`find`命令，或者`perl`命令来实现逐一替换
+
 示例：
 
 ```bash {cmd=true}

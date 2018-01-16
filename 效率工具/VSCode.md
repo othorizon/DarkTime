@@ -14,6 +14,15 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 - SQL Beautify (sensourceinc.vscode-sql-beautify)  
 格式化sql，人气较低，不太好用
 
+### markdown
+
+- markdownlint  :语法提示
+- Markdown All in One   :All you need for Markdown (keyboard shortcuts, table of contents, auto preview and more).
+- Markdown Preview Enhanced :强推，md预览
+- Markdown PasteURL ：快捷的粘贴url地址
+- Markdown Paste    ：快捷的粘贴图片
+
+
 ## 个性化设置
 ### 首选项-设置
 >VSCode的设置是json形式的配置，做了图形化显示，设置分为用户设置和工作区设置，工作区设置就是保存在当前工作区的`settings.json`，用户设置则是全局的。自定义的设置是一个新的json配置文件，里面的配置会覆盖系统默认配置文件，所以不用担心修改错了东西而改不回去

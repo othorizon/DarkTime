@@ -96,3 +96,32 @@ spring是主/父容器
 @transanction解释器的部分，将@transanction解释器在Spring-mvc中开启，这样就ok了。  
        自己在想了一下实际上就是Spring与Spring mvc配置文件解析的是分开的，你在applicationContext.xml里面开启了@transanction解释器，就会在applicationContext.xml配置的扫描包的时候把扫描到的@transanction这样的注解开启事务，然后Spring-mvc.xml也有扫描而且没有开启解释器就把，有事务功能的controller替换为没有事务功能的controller，@Transactional 就不起作用
 
+
+## application.properties文件配置
+
+### SpringBoot配置属性之DataSource
+
+[SpringBoot配置属性之DataSource - xixicat - SegmentFault](https://segmentfault.com/a/1190000004316491)
+
+```properties
+datasource.boss.url=jdbc:mysql://10.0.0.0:9800/boss
+datasource.boss.username=root
+datasource.boss.password=123456
+datasource.boss.driver-class-name=com.mysql.jdbc.Driver
+datasource.boss.max-idle=10
+datasource.boss.max-wait=10000
+datasource.boss.min-idle=5
+datasource.boss.initial-size=5
+
+#指定获取连接时连接校验的sql查询语句.
+datasource.boss.validation-query=SELECT 1
+
+#当从连接池借用连接时，是否测试该连接.
+datasource.boss.test-on-borrow=true
+
+#当连接空闲时，是否执行连接测试.
+datasource.boss.test-while-idle=true
+
+#指定空闲连接检查、废弃连接清理、空闲连接池大小调整之间的操作时间间隔
+datasource.boss.time-between-eviction-runs-millis=60000
+```

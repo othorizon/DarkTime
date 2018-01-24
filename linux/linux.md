@@ -106,3 +106,23 @@ find .  -name "CDN-流量-流量-今日用量数据-TOP20.sql"|awk -F'/CDN-' '{p
 #rename 默认在mac系统上没有，可以HomeBrew安装一下
 rename 's/old/new/' *.files
 ```
+
+----
+
+## 远程复制 scp rsync
+
+### scp
+
+使用代理服务远程复制文件，用于无法直接连接目标机器，而需要使用跳板机的时候
+
+```bash
+#本地文件 通过 A机 到 B机
+scp -o ProxyCommand='ssh A -W %h:%p' /tmp/a B:/tmp/a
+
+#示例
+scp -o ProxyCommand='ssh 10.69.57.76 -W %h:%p' ./test.txt 10.111.84.141:~/
+```
+
+参考
+<a href='linux-addition.md#scp远程复制' >详细说明</a>
+[scp如何跨过中转主机直接传输文件？ - 知乎](https://www.zhihu.com/question/38216180)

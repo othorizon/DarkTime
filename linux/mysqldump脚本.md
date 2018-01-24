@@ -6,7 +6,7 @@
 
 oldifs=$IFS
 dump(){
-mysqldump -h10.0.0.0 -uadmin -P9800 -p123456 --opt boss $1 | mysql  -uroot -P8306 -p123456 -C boss
+mysqldump -h10.0.0.0 -uadmin -P9800 -p123456 --opt --single-transaction boss $1 | mysql  -uroot -P8306 -p123456 -C boss
 }
 dtd(){
         IFS=$oldifs
@@ -44,3 +44,4 @@ do
 done
 ```
 
+`--opt`参数后面跟着的`--single-transaction`可以实现不锁住dump数据的表

@@ -109,3 +109,23 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 ]
 ```
 
+### 任务配置
+
+#### typescript的一键编译任务
+
+```json
+//自动运行tsc编译当前窗口的文件，并使用node命令来执行编译后的js文件
+{
+    "label": "Run tests",
+    "type": "shell",
+    "command": "(echo ${file}|awk -F '.' '{print $1}'|xargs tsc) && (echo ${file}|awk -F '.' '{print $1}'|xargs node)",
+    "group": {
+        "kind": "build",
+        "isDefault": true
+    },
+    "presentation": {
+        "reveal": "always",
+        "panel": "shared"
+    }
+}
+```

@@ -14,3 +14,8 @@
 
 - [从零开始，轻松搞定SpringCloud微服务系列 - 千万之路刚开始 - 博客园](http://www.cnblogs.com/hyhnet/p/7998751.html)
 - [项目改造接入Spring Cloud流程](http://blog.csdn.net/xinluke/article/details/68064599)
+
+#### fegin http请求工具，Feign使得 Java HTTP 客户端编写更方便
+
+- [Feign真正正确的使用方法](https://www.jianshu.com/p/3d597e9d2d67)
+- [Feign基础教程 - CSDN博客](http://blog.csdn.net/u010862794/article/details/73649616)

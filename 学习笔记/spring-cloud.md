@@ -12,6 +12,7 @@
 
 ### 其他资料
 
+- [Spring Cloud Eureka 常用配置及说明](https://www.cnblogs.com/li3807/p/7282492.html)
 - [非Spring Boot Web项目 注册节点到Eureka Server并提供服务 - CSDN博客](http://blog.csdn.net/songmaolin_csdn/article/details/77880324)
 - [使用spring-boot-admin对spring-boot服务进行监控](http://www.ityouknow.com/springboot/2018/02/11/spring-boot-admin.html)
 - [为你的spring cloud微服务添加宕机邮件通知/服务报警](http://blog.csdn.net/rickiyeat/article/details/73228713)
@@ -38,3 +39,28 @@
 ### spring mvc 注册到spring cloud中
 
 [非Spring Boot Web项目 注册节点到Eureka Server并提供服务 - CSDN博客](http://blog.csdn.net/songmaolin_csdn/article/details/77880324)
+
+### 坑点
+
+#### eureka集群中replicas显示为unavailable
+
+[spring cloud  unavailable-replicas - CSDN博客](http://blog.csdn.net/u012470019/article/details/77973156)
+
+启动服务时虽然采用  --spring.profiles.active = peerl 指定了配置文件，但还是会从 application.properties 中取值，将application.properties的
+
+``` preperties
+eureka.client.register-with-eureka=false
+eureka.client.fetch-registry=false
+```
+
+注释掉或者 在 application-peer1.properties 与 application-peer2.properties 中显示 指定 这两个属性值为true即可。
+
+#### eureka列表显示ip
+
+[eureka的Instances status列表显示ip](http://breezylee.iteye.com/blog/2393447)
+服务提供者配置
+
+```properties
+eureka.instance.prefer-ip-address=true
+eureka.instance.instance-id=${spring.cloud.client.ipAddress}:${server.port}
+```

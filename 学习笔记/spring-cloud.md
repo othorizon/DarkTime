@@ -40,6 +40,23 @@
 
 [非Spring Boot Web项目 注册节点到Eureka Server并提供服务 - CSDN博客](http://blog.csdn.net/songmaolin_csdn/article/details/77880324)
 
+### 配置中心
+
+可以使用消息总线，即借助mq来分发通知配置文件的修改。
+也可以不使用总线，则每个client需要手动触发`/refresh`事件来重新获取配置
+
+#### 不使用消息总线
+
+[springcloud(七)：配置中心svn示例和refresh - 纯洁的微笑博客](http://www.ityouknow.com/springcloud/2017/05/23/springcloud-config-svn-refresh.html)
+1.客户端添加`spring-boot-starter-actuator`依赖,该包具有一套完整的监控，其中包括一个`/refresh`功能
+2.需要给加载变量的类上面加载`@RefreshScope`,在客户端执行`/refresh`(**POST请求**)的时候就会更新此类下面的变量值
+3.添加配置`management.security.enabled=false`关闭安全认证
+4.配置变更后，客户端以post请求的方式来访问`http://localhost:8002/refresh`(`curl -X POST http://localhost:8002/refresh`)
+
+#### 使用消息总线
+
+[springcloud(九)：配置中心和消息总线（配置中心终结版）](http://www.ityouknow.com/springcloud/2017/05/26/springcloud-config-eureka-bus.html)
+
 ### 坑点
 
 #### eureka集群中replicas显示为unavailable

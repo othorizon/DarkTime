@@ -4,6 +4,22 @@
 
 ----
 
+## linux磁盘操作
+
+[Linux 系统格式化磁盘并挂载分区 - CSDN博客](http://blog.csdn.net/nahancy/article/details/52201121) [Linux 系统格式化磁盘并挂载分区 - yinxiang](https://app.yinxiang.com/shard/s9/nl/679699/fba3176d-fde4-4374-8614-9ac7ab3ef09e?title=Linux%20%E7%B3%BB%E7%BB%9F%E6%A0%BC%E5%BC%8F%E5%8C%96%E7%A3%81%E7%9B%98%E5%B9%B6%E6%8C%82%E8%BD%BD%E5%88%86%E5%8C%BA%20-%20CSDN%E5%8D%9A%E5%AE%A2) 
+
+[linux下查看磁盘分区的文件系统格式 - 游必有方 - 博客园](https://www.cnblogs.com/youbiyoufang/p/7607174.html)
+
+```bash
+df -h
+parted -l #可以查看未挂载的文件系统类型，以及哪些分区尚未格式化。
+fdisk -l
+mkfs.ext4 /dev/vdb
+mkdir /data
+echo '/dev/vdb /data ext4 defaults 0 0' >> /etc/fstab
+mount -a
+```
+
 ## sed
 
 `-i` ：直接替换文件内容

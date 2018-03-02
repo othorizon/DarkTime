@@ -94,3 +94,19 @@ cd $APP_HOME
 nohup java -jar $APP_HOME/convert.jar --server.port=9530  > /dev/null 2>&1 &
 ```
 
+```bash
+#!/bin/sh
+
+APP_NAME=$1
+APP_HOME=$2
+PORT=$3
+
+echo $APP_NAME
+echo $APP_HOME
+
+pkill -9 -f $APP_HOME/$APP_NAME.jar || echo noProcess
+cd $APP_HOME
+#nohup确保不会中断
+nohup java -jar $APP_NAME.jar --server.port=$PORT --logging.file=logs/$APP_NAME.log  >/dev/null 2>&1 &
+```
+

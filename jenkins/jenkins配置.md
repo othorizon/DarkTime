@@ -1,6 +1,7 @@
 # jenkins配置备份
 
 ## spring cloud的集群配置
+
 预览图
 ![jenkins-springcloud](media/jenkins-springcloud.png)
 jenkins的执行脚本
@@ -12,6 +13,8 @@ BUILD_ID=micro-server
 
 APP_HOME=/data/micro-service-explore/spring-cloud-explore
 
+ARGS="'-Xms64m -Xmx64m'"
+
 Single(){
 SINGLE_APP_NAME=$1
 REMOTE_HOST=$2
@@ -20,9 +23,9 @@ echo "deploy $SINGLE_APP_NAME,host:$REMOTE_HOST"
 ssh $REMOTE_HOST "rm -f ${APP_HOME}/${SINGLE_APP_NAME}.jar"
 scp ${SINGLE_APP_NAME}/target/${SINGLE_APP_NAME}.jar $REMOTE_HOST:$APP_HOME/${SINGLE_APP_NAME}.jar
 if [ "$SINGLE_APP_NAME" = "eureka-server" ];then
- ssh $REMOTE_HOST "sh -l ${APP_HOME}/eureka-restart.sh ${SINGLE_APP_NAME} ${APP_HOME}"
+ ssh $REMOTE_HOST "sh -l ${APP_HOME}/eureka-restart.sh ${SINGLE_APP_NAME} ${APP_HOME} ${ARGS}"
 else
- ssh $REMOTE_HOST "sh -l ${APP_HOME}/restart.sh ${SINGLE_APP_NAME} ${APP_HOME}"
+ ssh $REMOTE_HOST "sh -l ${APP_HOME}/restart.sh ${SINGLE_APP_NAME} ${APP_HOME} ${ARGS}"
 fi
 }
 
@@ -68,7 +71,7 @@ restart.sh
 
 APP_NAME=$1
 APP_HOME=$2
-PORT=$3
+ARGS=$3
 
 echo $APP_NAME
 echo $APP_HOME
@@ -76,7 +79,7 @@ echo $APP_HOME
 pkill -9 -f $APP_NAME.jar || echo noProcess
 cd $APP_HOME
 #nohup确保不会中断
-nohup java -jar $APP_NAME.jar --logging.file=logs/$APP_NAME.log  >/dev/null 2>&1 &
+nohup java $ARGS -jar $APP_NAME.jar --logging.file=logs/$APP_NAME.log >/dev/null 2>&1 &
 ```
 
 eureka-restart.sh
@@ -86,7 +89,7 @@ eureka-restart.sh
 
 APP_NAME=$1
 APP_HOME=$2
-PORT=$3
+ARGS=$3
 
 echo $APP_NAME
 echo $APP_HOME
@@ -94,5 +97,5 @@ echo $APP_HOME
 pkill -9 -f $APP_NAME.jar || echo noProcess
 cd $APP_HOME
 #nohup确保不会中断
-nohup java -jar $APP_NAME.jar --spring.profiles.active=peer1 --logging.file=logs/$APP_NAME.log  >/dev/null 2>&1 &
+nohup java $ARGS -jar $APP_NAME.jar --spring.profiles.active=peer1 --logging.file=logs/$APP_NAME.log >/dev/null 2>&1 &
 ```

@@ -236,7 +236,7 @@ step5:
  eureka.name=MVC-SERVICE
 
  #客户识别此服务的虚拟主机名，调用方使用该名字调用服务（相当于boot中的serviceId）
- eureka.vipAddress=MVC-SERVICE
+ #eureka.vipAddress=MVC-SERVICE
 
  #服务将被识别并将提供请求的端口（web服务部署的tomcat端口）
  eureka.port=8810

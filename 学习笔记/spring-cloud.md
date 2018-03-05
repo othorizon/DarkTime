@@ -85,6 +85,7 @@ eureka.instance.instance-id=${spring.cloud.client.ipAddress}:${server.port}
 ## 非Boot项目 注册到spring cloud（eureka server） 提供服务
 [非Spring Boot Web项目 注册节点到Eureka Server并提供服务 - CSDN博客](http://blog.csdn.net/qq_32193151/article/details/72559783)
 [非Spring Boot Web项目 注册节点到Eureka Server并提供服务 -evernote](https://app.yinxiang.com/shard/s9/nl/679699/e427b4d2-4c42-4afe-bb59-e9af56776147/)
+[非Spring Boot Web项目 注册节点到Eureka Server并提供服务 - CSDN博客](http://blog.csdn.net/songmaolin_csdn/article/details/77880324)
 
 step1:
  引用 eureka client的包,**要注意这里的jar包版本要与Spring Boot项目依赖的eureka-client jar包版本一致 不然可能不兼容**
@@ -115,9 +116,6 @@ import javax.servlet.ServletContextListener;
 @Slf4j
 public class EurekaInitAndRegisterListener implements ServletContextListener {
 
-    private static final DynamicPropertyFactory configInstance = DynamicPropertyFactory
-            .getInstance();
-
     /**
      * * Notification that the web application initialization
      * * process is starting.
@@ -129,11 +127,6 @@ public class EurekaInitAndRegisterListener implements ServletContextListener {
      */
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        /**设置被读取配置文件名称  默认config.properties*/
-        Properties properties = new Properties();
-        properties.setProperty("archaius.configurationSource.defaultFileName", "config.properties");
-        System.setProperties(properties);
-        /**注册*/
         registerWithEureka();
     }
 
@@ -150,24 +143,26 @@ public class EurekaInitAndRegisterListener implements ServletContextListener {
         log.info("o2o eureka Application Service initing and registering");
 
         /**Application Service 的 Eureka Server 初始化以及注册是异步的，需要一段时间 此处等待初始化及注册成功 可去除*/
-//        String vipAddress = configInstance.getStringProperty(
-//                "eureka.vipAddress", "o2o").get();
-//        InstanceInfo nextServerInfo = null;
-//        while (nextServerInfo == null) {
-//            try {
-//                nextServerInfo = DiscoveryManager.getInstance()
-//                        .getDiscoveryClient()
-//                        .getNextServerFromEureka(vipAddress, false);
-//            } catch (Throwable e) {
-//                log.info("Waiting for service to register with eureka..");
-//                try {
-//                    Thread.sleep(10000);
-//                } catch (InterruptedException e1) {
-//                    e1.printStackTrace();
-//                }
-//            }
-//        }
-//        log.info("Service started and ready to process requests..");
+    // private static final DynamicPropertyFactory configInstance = DynamicPropertyFactory
+    //         .getInstance();
+    // String vipAddress = configInstance.getStringProperty(
+    //         "eureka.vipAddress", "o2o").get();
+    // InstanceInfo nextServerInfo = null;
+    // while (nextServerInfo == null) {
+    //     try {
+    //         nextServerInfo = DiscoveryManager.getInstance()
+    //                 .getDiscoveryClient()
+    //                 .getNextServerFromEureka(vipAddress, false);
+    //     } catch (Throwable e) {
+    //         log.info("Waiting for service to register with eureka..");
+    //         try {
+    //             Thread.sleep(10000);
+    //         } catch (InterruptedException e1) {
+    //             e1.printStackTrace();
+    //         }
+    //     }
+    // }
+    // log.info("Service started and ready to process requests..");
     }
 
     /**

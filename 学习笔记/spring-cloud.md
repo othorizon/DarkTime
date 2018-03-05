@@ -96,6 +96,7 @@ step1:
     <version>1.4.12</version>
 </dependency>
  ```
+
 step2:
  写监听代码注册到eureka server
  ```java
@@ -181,6 +182,39 @@ public class EurekaInitAndRegisterListener implements ServletContextListener {
  ```
 
 step3:
+ 重写配置文件。项目会报找不到eureka Server的hostName的错，在boot中有个preferIpAdress的配置，配置后会默认使用ip访问而不是主机名hostName，在原生的eureka 中写preferIpAdress配置不会被解析读取，因此我们仿照boot的该配置做法：
+ ```java
+import com.netflix.appinfo.MyDataCenterInstanceConfig;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+ public class MyInstanceConfig extends MyDataCenterInstanceConfig{
+    @Override
+    public String getHostName(boolean refresh) {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            return super.getHostName(refresh);
+        }
+    }
+
+    /**
+     * 实例id是显示在服务中心列表页的status字段，就是boot项目中的
+     * `eureka.instance.instance-id=${spring.cloud.client.ipAddress}:${server.port}`这个配置，
+     * 因为boot项目里可以获取ip地址来显示。所以这里采用重写方法的方式来实现
+     * @return
+     */
+    @Override
+    public String getInstanceId() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress()+":"+getNonSecurePort();
+        } catch (UnknownHostException e) {
+            return "Unknown";
+        }
+    }
+}
+ ```
+
+step4:
  在web.xml中添加监听器配置
   ```xml
     <listener>
@@ -189,7 +223,7 @@ step3:
   </listener>
   ```
 
-step4:
+step5:
  在配置目录下添加config.properties文件（默认读取的文件名）添加配置
  ```properties
  #部署应用程序的区域

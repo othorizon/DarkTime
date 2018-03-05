@@ -249,7 +249,7 @@ step5:
  eureka.name=MVC-SERVICE
 
  #客户识别此服务的虚拟主机名，调用方使用该名字调用服务（相当于boot中的serviceId）
- #eureka.vipAddress=MVC-SERVICE
+ eureka.vipAddress=MVC-SERVICE
 
  #服务将被识别并将提供请求的端口（web服务部署的tomcat端口）
  eureka.port=8810
@@ -268,4 +268,4 @@ step5:
  特别注意：
  `eureka.name` 是服务在服务注册中心的页面中展示的名字（Application一列显示的名字）
  `eureka.vipAddress` 是调用方调用时的服务名字，即FeignClient注解位置填写的名字`@FeignClient(name = "MVC-SERVICE")`
- fegin调用使用的是`eureka.vipAddress`，而在spring cloud中的网关服务，即zuul服务，则使用的是`eureka.name`来访问，所以两个尽可能一致，或者注释掉`eureka.vipAddress`，这样会读取`eureka.name`的值
+ fegin调用使用的是`eureka.vipAddress`，而在spring cloud中的网关服务，即zuul服务，则使用的是`eureka.name`来访问，所以两个尽可能一致

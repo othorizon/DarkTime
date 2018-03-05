@@ -56,6 +56,19 @@
 #### 使用消息总线
 
 [springcloud(九)：配置中心和消息总线（配置中心终结版）](http://www.ityouknow.com/springcloud/2017/05/26/springcloud-config-eureka-bus.html)
+[Application Context ID 说明](http://www.itmuch.com/spring-cloud-code-read/spring-cloud-code-read-spring-cloud-bus/)
+需要刷新消息的客户端添加依赖,该包提供了消息的发送和接受
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+</dependency>
+```
+
+在任意配置了该依赖的客户端执行`/bus/refresh`即可以将配置更新消息通知给所有客户端。
+如果需要指明具体更新配置的客户端则使用`/bus/refresh?destination=customers:8000`
+**`destination`的值是各个微服务的ApplicationContext ID**，关于ApplicationContext ID可以在org.springframework.boot.context.ContextIdApplicationContextInitializer 类的getApplicationId() 方法中看到。默认应该是`${spring.application.name}:${server.port}`
 
 ### 坑点
 

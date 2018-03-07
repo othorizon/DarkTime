@@ -19,6 +19,7 @@
 - [从零开始，轻松搞定SpringCloud微服务系列 - 千万之路刚开始 - 博客园](http://www.cnblogs.com/hyhnet/p/7998751.html)
 - [项目改造接入Spring Cloud流程](http://blog.csdn.net/xinluke/article/details/68064599)
 - [微服务架构的基础框架选择：Spring Cloud还是Dubbo？ - CSDN博客](http://blog.csdn.net/kobejayandy/article/details/52078275)
+- [spring cloud bus 扩展消息总线方法](https://www.jianshu.com/p/093ed9816993)
 
 #### fegin http请求工具，Feign使得 Java HTTP 客户端编写更方便
 
@@ -70,6 +71,36 @@
 在任意配置了该依赖的客户端执行`/bus/refresh`即可以将配置更新消息通知给所有客户端。
 如果需要指明具体更新配置的客户端则使用`/bus/refresh?destination=customers:8000`
 **`destination`的值是各个微服务的ApplicationContext ID**，关于ApplicationContext ID可以在org.springframework.boot.context.ContextIdApplicationContextInitializer 类的getApplicationId() 方法中看到。默认应该是`${spring.application.name}:${server.port}`
+
+### 消息总线
+
+[Spring Cloud Bus中的事件的订阅与发布（一） - 掘金](https://juejin.im/post/5a83926c6fb9a063523df632)
+
+#### 扩展消息总线/自定义消息总线配置
+
+[spring cloud bus 扩展消息总线方法](https://www.jianshu.com/p/093ed9816993)
+`spring cloud bus 扩展消息总线方法`文中存在一个问题，使用这种继承`AbstractBusEndpoint`和`BusAutoConfiguration`的方式来发送message会导致消息重复接收，以及导致原有的消息总件功能失效，
+因此应该采用其它方式来发送消息，如下
+
+```java
+@Autowired
+private ApplicationEventPublisher publisher;
+@Autowired
+private ApplicationContext context;
+
+@RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+@ResponseBody
+public JsonResult<String> test() {
+    final String instanceId=context.getId();
+    final TradeAppliedEvent event=new TradeAppliedEvent(this,instanceId,null);
+    event.setTradeId("test trade id");
+    event.setUserId("test user id");
+    publisher.publishEvent(event);
+    // ApplicationContext继承了ApplicationEventPublisher，因此也可以发送消息
+    // context.publishEvent(event);
+    return new JsonResult<>("");
+}
+```
 
 ### 坑点
 

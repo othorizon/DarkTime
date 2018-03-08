@@ -84,8 +84,6 @@
 
 ```java
 @Autowired
-private ApplicationEventPublisher publisher;
-@Autowired
 private ApplicationContext context;
 
 @RequestMapping(value = "/config", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -95,12 +93,12 @@ public JsonResult<String> test() {
     final TradeAppliedEvent event=new TradeAppliedEvent(this,instanceId,null);
     event.setTradeId("test trade id");
     event.setUserId("test user id");
-    publisher.publishEvent(event);
-    // ApplicationContext继承了ApplicationEventPublisher，因此也可以发送消息
-    // context.publishEvent(event);
+    context.publishEvent(event);
     return new JsonResult<>("");
 }
 ```
+
+[**github 示例**](https://github.com/othorizon/spring-cloud-explore/tree/master/order/src/main/java/top/kou/order/bus)
 
 ### 坑点
 

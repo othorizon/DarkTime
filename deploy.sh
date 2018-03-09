@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 mes=$1
 echo start deploy
 summary -b -t;mv _summary.md SUMMARY.md

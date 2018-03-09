@@ -24,7 +24,7 @@
 * 专题
   * [专题](./专题/专题.md)
   * spring-cloud
-     * [Spring Cloud 整理汇总](./专题/spring-cloud/Spring-Cloud.md)
+* [Spring Cloud 整理汇总](./专题/spring-cloud/Spring-Cloud.md)
 * shell
   * [linux/mac 实用脚本](./shell/实用脚本.md)
 * maven

@@ -13,7 +13,7 @@ getspcae(){
     done
     echo "${tab}"
 }
-lastName
+
 build(){
     path=$1
     #深度 统计字符出现次数

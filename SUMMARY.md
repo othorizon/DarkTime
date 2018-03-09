@@ -19,7 +19,6 @@
   * [tomcat目录规范](./tomcat/tomcat规范.md)
 * code_snippets
 * 专题
-  * [专题](./专题/专题.md)
   * spring-cloud
     * [Spring Cloud 整理汇总](./专题/spring-cloud/Spring-Cloud.md)
 * shell

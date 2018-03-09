@@ -1,6 +1,3 @@
-# Summary
-
-* [Introduction](README.md)
 * SpringBoot
   * [Spring Boot 部署war包](./SpringBoot/springboot部署war包.md)
   * [springboot搭建](./SpringBoot/springboot搭建.md)
@@ -20,11 +17,7 @@
   * [homebrew的使用](./效率工具/homebrew.md)
 * tomcat
   * [tomcat目录规范](./tomcat/tomcat规范.md)
-<<<<<<< HEAD
 * code_snippets
-=======
-* code\_snippets
->>>>>>> b5924ccbbe06350f0b730177059193ead0e43631
 * 专题
   * [专题](./专题/专题.md)
   * spring-cloud
@@ -43,14 +36,10 @@
 * mysql
   * [sql函数](./mysql/sql函数.md)
 * 学习笔记
-<<<<<<< HEAD
   * python
+    * [](./学习笔记/python/python.md)
+    * [](./学习笔记/python/21.md)
     * [爬虫教程](./学习笔记/python/爬虫.md)
-=======
-  * [python](学习笔记/python/python.md)
-  * [爬虫教程](./学习笔记/python/爬虫.md)
-  * [21](学习笔记/python/21.md)
->>>>>>> b5924ccbbe06350f0b730177059193ead0e43631
   * [java code snippets](./学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](./学习笔记/spring-cloud-not-boot.md)
   * [spring cloud](./学习笔记/spring-cloud.md)

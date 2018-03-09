@@ -5,7 +5,7 @@ getspcae(){
     tab=""
     for ((i=2;i<$1;i++))
     do 
-     tab=${tab}" "
+     tab=${tab}"  "
     done
     echo "${tab}"
 }

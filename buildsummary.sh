@@ -25,34 +25,34 @@ writeline(){
     result="${result}${tab}* [${title}](${fpath})\n"
 }
 getnode(){
-    fpath=$1
+    title=$1
     depth=$2
-    title=${fpath%/*}
+    title=${title:2}
     title=${title#*/}
     tab=`getspcae $depth`
     
-    echo "${tab}* ${title}\n"
+    echo "${tab}* ${title}"
 }
 dive(){
     local dirs=$1
     if [ -z "$dirs" ]; then return;fi
     
-    #写节点
-    local existnode=0
+      
     local depth=$2
+    local node=$3
     local nextdepth=`expr $2 + 1`
+    #写节点
+    if [ -n "$node" ];then
+      result="${result}${node}\n"
+    fi
 
     for dir in ${dirs[@]}
     do
-        local node=`getnode "${dir}" ${depth}`
+        
         if [ -d "${dir}" ];then
-          dive "`find ${dir} \( -iname "*.md" -or -type d \) -d 1`" $nextdepth
+          nextnode=`getnode "${dir}" ${nextdepth}`
+          dive "`find ${dir} \( -iname "*.md" -or -type d \) -d 1`" $nextdepth "${nextnode}"
         else
-          if [ $existnode == 0 ];then
-             echo "${node}"
-             result="${result}${node}\n"
-             existnode=1
-          fi
           writeline "${dir}" ${nextdepth}
         fi
     done

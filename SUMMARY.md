@@ -17,9 +17,10 @@
  * [homebrew的使用](./效率工具/homebrew.md)
 * tomcat
  * [tomcat目录规范](./tomcat/tomcat规范.md)
+* code_snippets
 * 专题
  * [专题](./专题/专题.md)
- * 专题/spring-cloud
+ * spring-cloud
   * [Spring Cloud 整理汇总](./专题/spring-cloud/Spring-Cloud.md)
 * shell
  * [linux/mac 实用脚本](./shell/实用脚本.md)
@@ -34,9 +35,9 @@
  * [附加文档](./linux/linux-addition.md)
 * mysql
  * [sql函数](./mysql/sql函数.md)
- * 学习笔记/python
-  * [爬虫教程](./学习笔记/python/爬虫.md)
 * 学习笔记
+ * python
+  * [爬虫教程](./学习笔记/python/爬虫.md)
  * [java code snippets](./学习笔记/java_code_snippets.md)
  * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](./学习笔记/spring-cloud-not-boot.md)
  * [spring cloud](./学习笔记/spring-cloud.md)

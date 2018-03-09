@@ -6,8 +6,8 @@ echo start deploy
 # summary -d
 
 sh buildsummary.sh
-git pull
 git status
 git acm $mes
+git pull
 git push
 git status

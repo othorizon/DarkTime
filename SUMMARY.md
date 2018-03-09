@@ -37,8 +37,6 @@
   * [sql函数](./mysql/sql函数.md)
 * 学习笔记
   * python
-    * [](./学习笔记/python/python.md)
-    * [](./学习笔记/python/21.md)
     * [爬虫教程](./学习笔记/python/爬虫.md)
   * [java code snippets](./学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](./学习笔记/spring-cloud-not-boot.md)

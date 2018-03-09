@@ -16,6 +16,7 @@
   * [ maven使用](maven/maven使用.md)
   * [ sql函数](mysql/sql函数.md)
   * [ ngix 文件浏览器 文件服务器](nginx/nginx文件浏览器.md)
+  * [ linux/mac 实用脚本](shell/实用脚本.md)
   * [ tomcat目录规范](tomcat/tomcat规范.md)
   * [ java code snippets](学习笔记/java_code_snippets.md)
   * [ 非Spring Boot Web项目 注册节点到Eureka Server并提供服务](学习笔记/spring-cloud-not-boot.md)

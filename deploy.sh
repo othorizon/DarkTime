@@ -4,7 +4,7 @@ mes=$1
 echo start deploy
 # summary -b -t;mv _summary.md SUMMARY.md
 # summary -d
-sh buidsummary.sh
+sh ./buidsummary.sh
 git pull
 git status
 git acm $mes

@@ -4,7 +4,7 @@
 getspcae(){
     tab=""
     for ((i=2;i<$1;i++))
-    do 
+    do
      tab=${tab}"  "
     done
     echo "${tab}"
@@ -21,7 +21,7 @@ writeline(){
     title=${title/# /}
 
     tab=`getspcae $depth`
-    
+
     result="${result}${tab}* [${title}](${fpath})\n"
 }
 getnode(){
@@ -48,7 +48,7 @@ dive(){
 
     for dir in ${dirs[@]}
     do
-        
+
         if [ -d "${dir}" ];then
           nextnode=`getnode "${dir}" ${nextdepth}`
           dive "`find ${dir} \( -iname "*.md" -or -type d \) -d 1`" $nextdepth "${nextnode}"

@@ -53,7 +53,7 @@ add a table of content navigator on the right top of each page, and a return to 
 getspcae(){
     tab=""
     for ((i=2;i<$1;i++))
-    do 
+    do
      tab=${tab}"  "
     done
     echo "${tab}"
@@ -70,7 +70,7 @@ writeline(){
     title=${title/# /}
 
     tab=`getspcae $depth`
-    
+
     result="${result}${tab}* [${title}](${fpath})\n"
 }
 getnode(){
@@ -79,14 +79,14 @@ getnode(){
     title=${title:2}
     title=${title#*/}
     tab=`getspcae $depth`
-    
+
     echo "${tab}* ${title}"
 }
 dive(){
     local dirs=$1
     if [ -z "$dirs" ]; then return;fi
-    
-      
+
+
     local depth=$2
     local node=$3
     local nextdepth=`expr $2 + 1`
@@ -97,7 +97,7 @@ dive(){
 
     for dir in ${dirs[@]}
     do
-        
+
         if [ -d "${dir}" ];then
           nextnode=`getnode "${dir}" ${nextdepth}`
           dive "`find ${dir} \( -iname "*.md" -or -type d \) -d 1`" $nextdepth "${nextnode}"

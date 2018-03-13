@@ -60,7 +60,7 @@ dive(){
 
 result=""
 #\( -iname "*.md" -or -type d \)
-dive "`find . \( -iname "*.md" -or -type d \) ! -iname "README.MD" ! -iname "SUMMARY.MD" ! -iname "_SUMMARY.MD" ! -path "./.git" -d 1`" 1
+dive "`find . \( -iname "*.md" -or -type d \) ! -iname "README.MD" ! -iname "SUMMARY.MD" ! -iname "_SUMMARY.MD" ! -path "./.git" ! -path "./node_modules" -d 1`" 1
 
 #写文件
 echo make SUMMARY.md

@@ -37,3 +37,7 @@ maven的多模块，由于项目比较大，每次修改后构建整个工程耗
 如果一切都没有问题，那就直接提交版本号：
 `mvn versions:commit`
 修改版本所产生的backup文件会在commit后自动删除。
+
+## maven打tar.gz包来部署
+
+[maven assembly打tar.gz包。 - CSDN博客](http://blog.csdn.net/sdlyjzh/article/details/53396370)

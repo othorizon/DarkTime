@@ -20,6 +20,27 @@ gitbook build --log=debug //指定log的级别
 gitbook builid --debug //输出错误信息
 ```
 
+### 插件
+
+[Plugins for GitBook](https://plugins.gitbook.com/)
+
+启用方法：To add a plugin, create or edit your book.json to include the plugin identifier:
+
+```json
+{
+    "plugins": ["thePlugin"]
+}
+```
+
+**导航插件 my-navigator**
+add a table of content navigator on the right top of each page, and a return to top button without smart-phone or tablet
+
+```json
+{
+    "plugins": ["my-navigator"]
+}
+```
+
 ## 脚本
 
 自动生成summary文件的脚本，用shell写的，逐级递归遍历

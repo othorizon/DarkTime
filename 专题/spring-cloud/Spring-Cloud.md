@@ -6,6 +6,10 @@
 
 ## 概述
 
+cloud的微服务是采用Rest协议，dubbo采用的则是RPC协议
+
+## 框架
+
 **[Eureka](#eureka)**：
 服务中心
 

@@ -3,7 +3,10 @@
 
 getspcae(){
     tab=""
-    for ((i=2;i<$1;i++))
+    local count=`expr $1 - 2`
+    if [ "${count}" -le 0 ]; then return;fi
+
+    for a in `seq $count`
     do
      tab=${tab}"  "
     done

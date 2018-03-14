@@ -1,4 +1,4 @@
--e * SpringBoot
+* SpringBoot
   * [Spring Boot 部署war包](./SpringBoot/springboot部署war包.md)
   * [springboot搭建](./SpringBoot/springboot搭建.md)
   * [简单总结](./SpringBoot/简单总结.md)

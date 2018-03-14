@@ -70,5 +70,5 @@ dive "`find . -maxdepth 1  -mindepth 1 \( -iname "*.md" -or -type d \) ${ignore}
 
 #写文件
 echo generate SUMMARY.md
-echo -e "${result}" > ${root}/SUMMARY.md
+echo "${result}" > ${root}/SUMMARY.md
 echo finish

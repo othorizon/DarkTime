@@ -29,7 +29,6 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 >VSCode的设置是json形式的配置，做了图形化显示，设置分为用户设置和工作区设置，工作区设置就是保存在当前工作区的`settings.json`，用户设置则是全局的。自定义的设置是一个新的json配置文件，里面的配置会覆盖系统默认配置文件，所以不用担心修改错了东西而改不回去
 
 ``` json
-// 一个示例用户设置
 {
     "rest-client.environmentVariables": {
         "local": {
@@ -46,7 +45,10 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
     "java.errors.incompleteClasspath.severity": "ignore",
     "workbench.iconTheme": "vs-seti",
     "files.autoGuessEncoding": false,
-    "workbench.editor.closeOnFileDelete": false
+    "workbench.editor.closeOnFileDelete": false,
+    "gitHistory.showEditorTitleMenuBarIcons": false,
+    "workbench.statusBar.feedback.visible": false,
+    "pasteImage.path": "./media"
 }
 ```
 
@@ -71,7 +73,7 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 > 这里除了定义系统按键也可以定义插件（json设置中以extesion前缀）的按键设置，当然 插件的快捷键也可以在插件的首页里进行配置更为清晰
 
 ``` json
-// 一些自定义的按键设置
+// 将键绑定放入此文件中以覆盖默认值
 [
     {
         "key": "cmd+/",
@@ -105,6 +107,19 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
     {
         "key": "ctrl+cmd+m",
         "command": "extension.minifyJSON"
+    },
+    {
+        "key": "cmd+.",
+        "command": "-editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "cmd+[Period]",
+        "command": "editor.action.quickFix"
+    },
+    {
+        "key": "ctrl+[Backquote]",
+        "command": "workbench.action.terminal.toggleTerminal"
     }
 ]
 ```

@@ -1,5 +1,9 @@
 #!/bin/bash
-#set -x
+# set -ex
+root=$1
+cd $root
+
+ignore="! -iname "README.MD" ! -iname "SUMMARY.MD" ! -iname "_SUMMARY.MD" ! -path "./.git" ! -path "./node_modules""
 
 getspcae(){
     tab=""
@@ -39,8 +43,8 @@ getnode(){
 dive(){
     local dirs=$1
     if [ -z "$dirs" ]; then return;fi
-    
-      
+
+
     local depth=$2
     local node=$3
     local nextdepth=`expr $2 + 1`
@@ -51,10 +55,9 @@ dive(){
 
     for dir in ${dirs[@]}
     do
-
         if [ -d "${dir}" ];then
           nextnode=`getnode "${dir}" ${nextdepth}`
-          dive "`find ${dir} \( -iname "*.md" -or -type d \) -d 1`" $nextdepth "${nextnode}"
+        dive "`find ${dir} -maxdepth 1  -mindepth 1 \( -iname "*.md" -or -type d \)`" $nextdepth "${nextnode}"
         else
           writeline "${dir}" ${nextdepth}
         fi
@@ -62,10 +65,10 @@ dive(){
 }
 
 result=""
-#\( -iname "*.md" -or -type d \)
-dive "`find . \( -iname "*.md" -or -type d \) ! -iname "README.MD" ! -iname "SUMMARY.MD" ! -iname "_SUMMARY.MD" ! -path "./.git" ! -path "./node_modules" -d 1`" 1
+
+dive "`find . -maxdepth 1  -mindepth 1 \( -iname "*.md" -or -type d \) ${ignore}`" 1
 
 #写文件
-echo make SUMMARY.md
-echo "${result}" > SUMMARY.md
+echo generate SUMMARY.md
+echo -e "${result}" > ${root}/SUMMARY.md
 echo finish

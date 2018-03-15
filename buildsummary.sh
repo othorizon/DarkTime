@@ -1,6 +1,10 @@
 #!/bin/bash
 # set -ex
 root=$1
+if [ -z "$root" ];then
+root="./"
+fi
+
 cd $root
 
 ignore="! -iname "README.MD" ! -iname "SUMMARY.MD" ! -iname "_SUMMARY.MD" ! -path "./.git" ! -path "./node_modules""
@@ -26,6 +30,8 @@ writeline(){
     title=${title/#\#/}
     #去掉开头空格
     title=${title/# /}
+    #去掉开头的点
+    fpath=${fpath:1}
 
     tab=`getspcae $depth`
 

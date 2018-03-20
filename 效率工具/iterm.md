@@ -19,7 +19,10 @@
     vi .ssh/config
      
     #添加如下内容
-     
+    #防止github被ssh记忆
+    Host github.com other-exception.example.com
+    ControlPath none
+
     Host *
     ControlMaster auto
     ControlPersist yes
@@ -29,6 +32,7 @@
 ![](media/15103143996026.png)
 
 解释：
+- 配置不对github域名起作用，不然会影响使用sshkey来请求github。[ssh ControlMaster exceptions](https://unix.stackexchange.com/questions/122835/ssh-controlmaster-exceptions)
 - ControlPersist为长连接，打开之后即使关闭了所有relay的ssh连接，一段时间内也能无需密码重新连接。可按时间配置,`ControlPersist 8h`这就是保持8小时
 - ControlMaster配合ControlPath一起使用，当打开了一个relay的ssh连接之后，再次打开无需重复输入密码，但是关闭所有连接后，再次连接relay仍需输入密码。
 - Compression为压缩选项，打开之后加快数据传输速度。`Compression yes`

@@ -45,3 +45,8 @@ done
 ```
 
 `--opt`参数后面跟着的`--single-transaction`可以实现不锁住dump数据的表
+
+
+## 导入
+
+mysql -hlocahost -P3310 -uroot -p1234 activiti < ./activiti.sql

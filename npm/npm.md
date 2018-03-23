@@ -4,6 +4,7 @@
 
 [如何发布自己模块到NPM](https://www.jianshu.com/p/f5d4c891830f)
 [深入 Node 模块的安装和发布 - 前端涨姿势 - SegmentFault 思否](https://segmentfault.com/a/1190000004221514)
+[npm 与 package.json 快速入门 - CSDN博客](https://blog.csdn.net/u011240877/article/details/76582670)
 
 
 [vue.js - npm 如何引用github上的依赖包](https://segmentfault.com/q/1010000010884415)

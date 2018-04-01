@@ -32,7 +32,7 @@ The commit-ish can be any tag, sha, or branch which can be supplied as an argume
 
 ## 模块升级
 
-使用 npm-check插件：[npm更新模块同步到package.js中 - CSDN博客](https://blog.csdn.net/wkl305268748/article/details/76641323)
+使用 npm-check插件：[npm更新模块同步到package.js中 - CSDN博客](https://blog.csdn.net/wkl305268748/article/details/76641323),[Node.js开源项目推荐：npm模块升级工具 npm-check - CNode技术社区](http://cnodejs.org/topic/5705cd70c5f5b4a959e9192a)
 
 原始方案：
 

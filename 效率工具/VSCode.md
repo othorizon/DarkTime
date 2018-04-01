@@ -13,6 +13,7 @@ View git log along with the graph and details.
 REST Client allows you to send HTTP request and view the response in Visual Studio Code directly.
 - SQL Beautify (sensourceinc.vscode-sql-beautify)  
 格式化sql，人气较低，不太好用
+- [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) 将vscode的设置同步到gist来存储
 
 ### markdown
 

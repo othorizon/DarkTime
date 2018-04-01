@@ -18,4 +18,20 @@ Optional <integer>sum1 = numStream.reduce((x, y) -> x + y);
 Integer sum2 = numStream.reduce(0, Integer::sum);
 ```
 
-reduce 如果不加参数`identity`则返回的是optional类型的，reduce再进行双目运算时，其中一个场景是与`identity`做比较操作，因此我们应该满足`identity op x = x`
+reduce 如果不加参数`identity`则返回的是optional类型的，reduce在进行双目运算时，其中一个场景是与`identity`做比较操作，因此我们应该满足`identity op x = x`
+
+示例代码：分组后每组返回最大的一条数据
+
+```java
+List<StandardTaskController.TaskResponse> taskResponses = queryResult.stream().map(task -> buildTaskResponse(task, queryParam.getBusinessType()))
+                .collect(Collectors.toList());
+StandardTaskController.TaskResponse zeroTime = StandardTaskController.TaskResponse
+            .builder().createTime(new Date(0)).build();
+taskResponses=taskResponses.stream()
+.collect(
+        Collectors.collectingAndThen(
+                Collectors.groupingBy(StandardTaskController.TaskResponse::getProInsId,
+                        Collectors.reducing(zeroTime,
+                                BinaryOperator.maxBy(Comparator.comparing(StandardTaskController.TaskResponse::getCreateTime)))),
+                                                        r -> new ArrayList<>(r.values())));
+```

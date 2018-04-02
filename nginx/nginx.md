@@ -51,6 +51,23 @@ proxy_set_header    X-Real-IP $remote_addr;
 server {
         listen 80;
         server_name abc.com;
-        rewrite ^/(.*)$ http://www.abc.com/$1 permanent;
+        #显式url跳转 永久重定向
+        #rewrite ^/(.*)$ http://www.abc.com/$1 permanent;
+        # 显式url跳转，临时重定向
+        rewrite ^/(.*)$ https://rizon.top/tool/ last;
 }
 ```
+
+语法说明
+    rewrite    regex   replacement    [flag];
+    关键字      正则     替代内容        flag标记
+
+正则：perl兼容正则表达式语句进行规则匹配
+替代内容：将正则匹配的内容替换成replacement
+flag标记：rewrite支持的flag标记
+
+flag标记说明：
+last  #本条规则匹配完成后，继续向下匹配新的location URI规则
+break  #本条规则匹配完成即终止，不再匹配后面的任何规则
+redirect  #返回302临时重定向，浏览器地址会显示跳转后的URL地址
+permanent  #返回301永久重定向，浏览器地址栏会显示跳转后的URL地址

@@ -49,3 +49,13 @@ bill.role-id.push=23
 bill.email.receiver=zhanghao6@kingsoft.com
 bill.email.cc=GUOMEINA@kingsoft.com
 ```
+
+ConfigurationProperties 注解需要添加依赖
+
+```xml pom.xml
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-configuration-processor</artifactId>
+    <optional>true</optional>
+</dependency>
+```

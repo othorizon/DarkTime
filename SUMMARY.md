@@ -1,15 +1,18 @@
 * SpringBoot
   * [Spring Boot 部署war包](/SpringBoot/springboot部署war包.md)
   * [springboot搭建](/SpringBoot/springboot搭建.md)
+  * [spring boot 读取配置文件](/SpringBoot/springboot读取配置文件.md)
   * [简单总结](/SpringBoot/简单总结.md)
   * [spring配置文件](/SpringBoot/spring配置.md)
 * database
   * [druid使用](/database/druid.md)
 * 效率工具
   * [开源框架](/效率工具/开源框架.md)
+  * [解决dns污染导致域名解析失败](/效率工具/dns-host.md)
   * [sonarqube 相关配置](/效率工具/sonarqube代码质量.md)
   * [Iterm2 使用](/效率工具/iterm.md)
   * [gitbook](/效率工具/gitbook.md)
+  * [github awesome github资源推荐](/效率工具/githubAwesome.md)
   * [linux中的office](/效率工具/linux-office.md)
   * [简单Mock服务（moco）](/效率工具/mock-server.md)
   * [npm](/效率工具/npm.md)
@@ -26,19 +29,24 @@
 * maven
   * [maven使用](/maven/maven使用.md)
   * [仓库](/maven/maven仓库.md)
+* java
+  * [java](/java/java.md)
 * nginx
-  * [nginx 做域名绑定](/nginx/nginx域名绑定.md)
+  * [nginx](/nginx/nginx.md)
   * [ngix 文件浏览器 文件服务器](/nginx/nginx文件浏览器.md)
 * linux
+  * [常用命令](/linux/linux-regular-cmd.md)
   * [linux脚本](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)
   * [附加文档](/linux/linux-addition.md)
 * mysql
-  * [sql函数](/mysql/sql函数.md)
+  * [sql](/mysql/sql.md)
 * 学习笔记
   * [建站经历](/学习笔记/建站.md)
   * python
     * [爬虫教程](/学习笔记/python/爬虫.md)
+  * baas
+    * [在本地部署Parse Server](/学习笔记/baas/parse-server.md)
   * [java code snippets](/学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](/学习笔记/spring-cloud-not-boot.md)
   * [spring cloud](/学习笔记/spring-cloud.md)
@@ -51,4 +59,6 @@
 * git
   * [ignore](/git/ignore.md)
   * [git使用总结](/git/git.md)
+* 前端
+  * [swig](/前端/swig.md)
 

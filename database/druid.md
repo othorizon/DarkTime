@@ -17,4 +17,6 @@
 
 `validationQueryTimeout`是用来配置查询SQL的超时时间的，但是超时后会继续重试，而不是报错。`maxWait`参数才是真正确定了申请连接的超时时间，当一个申请连接操作达到`maxWait`指定的时间后便会抛出错误
 
+## 配置监控
 
+[Druid--基本配置及内置监控使用 - CSDN博客](https://blog.csdn.net/szzt_lingpeng/article/details/50612258)

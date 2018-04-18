@@ -4,6 +4,8 @@
 
 ### spring cloud 优质教程集合
 
+- [spring-boot-admin基础搭建教程](https://www.jianshu.com/p/33f9f5aae95b)
+
 - [springboot学习资料汇总 - 纯洁的微笑博客](http://www.ityouknow.com/springboot/2015/12/30/springboot-collect.html)
 - [springcloud学习资料汇总-纯洁的微笑博客](http://www.ityouknow.com/springcloud/2016/12/30/springcloud-collect.html)
 - [spring-boot-纯洁的微笑博客](http://www.ityouknow.com/spring-boot.html)

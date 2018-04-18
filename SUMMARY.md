@@ -4,6 +4,7 @@
   * [spring boot 读取配置文件](/SpringBoot/springboot读取配置文件.md)
   * [简单总结](/SpringBoot/简单总结.md)
   * [spring配置文件](/SpringBoot/spring配置.md)
+  * [spring boot Configuration](/SpringBoot/springboot之Configuration.md)
 * database
   * [druid使用](/database/druid.md)
 * 效率工具
@@ -24,6 +25,8 @@
 * 专题
   * spring-cloud
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
+* 云主机
+  * [aliyun 主机的种种](/云主机/aliyun.md)
 * shell
   * [linux/mac 实用脚本](/shell/实用脚本.md)
 * maven
@@ -45,6 +48,7 @@
   * [建站经历](/学习笔记/建站.md)
   * python
     * [爬虫教程](/学习笔记/python/爬虫.md)
+  * [如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？ - 知乎](https://www.zhihu.com/question/30898326)](/学习笔记/待整理.md)
   * baas
     * [在本地部署Parse Server](/学习笔记/baas/parse-server.md)
   * [java code snippets](/学习笔记/java_code_snippets.md)

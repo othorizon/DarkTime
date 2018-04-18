@@ -12,7 +12,8 @@ public class EmailNotifierConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    @ConditionalOnProperty("admin.notify.email.to")
+    // @ConditionalOnProperty("admin.notify.email.to")
+    @ConditionalOnProperty(value="admin.notify.email.to", havingValue = "true")
     public EmailNotifier mailNotifier() {
         return new EmailNotifier();
     }

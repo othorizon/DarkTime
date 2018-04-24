@@ -2,6 +2,7 @@
 
 ## 读取远程文件内容并渲染markdown格式
 
+参考:[Awesome系列](https://rizon.top/share/awesome-series/)
 ```javascript
 <!--markdown渲染工具-->
 <script src="//cdn.bootcss.com/markdown.js/0.5.0/markdown.min.js"></script>

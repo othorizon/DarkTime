@@ -5,6 +5,7 @@
   * [简单总结](/SpringBoot/简单总结.md)
   * [spring配置文件](/SpringBoot/spring配置.md)
   * [spring boot Configuration](/SpringBoot/springboot之Configuration.md)
+  * [spring boot 配置mybatis](/SpringBoot/springboot配置mybatis.md)
 * database
   * [druid使用](/database/druid.md)
 * 效率工具
@@ -24,6 +25,7 @@
 * code_snippets
 * 专题
   * spring-cloud
+    * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
 * 云主机
   * [aliyun 主机的种种](/云主机/aliyun.md)
@@ -63,7 +65,9 @@
 * git
   * [ignore](/git/ignore.md)
   * [git使用总结](/git/git.md)
+  * [git配置多个远程仓库](/git/git配置多个远程仓库.md)
 * 前端
   * [swig](/前端/swig.md)
   * [各种资源](/前端/资源.md)
+  * [一些有用的js代码](/前端/js代码块.md)
 

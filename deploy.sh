@@ -8,7 +8,7 @@ echo start deploy,dir:$dir,message:$mes
 
 sh buildsummary.sh "${dir}"
 git status
-git acm $mes
+git acm "$mes"
 git pull
 git push
 git status

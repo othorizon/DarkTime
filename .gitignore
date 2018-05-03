@@ -2,3 +2,5 @@
 # tmp files
 _summary.md
 .li.json
+node_modules
+_book

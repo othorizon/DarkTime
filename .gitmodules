@@ -1,0 +1,3 @@
+[submodule "MacAwesome"]
+	path = MacAwesome
+	url = git@github.com:othorizon/MacAwesome.git

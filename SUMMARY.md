@@ -6,6 +6,14 @@
   * [spring配置文件](/SpringBoot/spring配置.md)
   * [spring boot Configuration](/SpringBoot/springboot之Configuration.md)
   * [spring boot 配置mybatis](/SpringBoot/springboot配置mybatis.md)
+* MacAwesome
+  * [markdown使用](/MacAwesome/markdown.md)
+  * [MAC APP Awesome](/MacAwesome/app.md)
+  * [chrome](/MacAwesome/chrome.md)
+  * [intellij idea](/MacAwesome/intellij_idea.md)
+  * [MacAwesome](/MacAwesome/README.md)
+  * [VS Code 的使用](/MacAwesome/VSCode.md)
+  * [MAC Shell命令](/MacAwesome/Shell命令.md)
 * database
   * [druid使用](/database/druid.md)
 * 效率工具

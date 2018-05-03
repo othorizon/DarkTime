@@ -1,0 +1,90 @@
+#anchors-navbar {
+    visibility: hidden;
+    border: 1px solid rgba(128,128,128,0.5);
+    box-shadow: 0px 1px 2px rgba(128,128,128,0.5);
+    padding: 5px 10px;
+    position: absolute;
+    background-color: inherit;
+    left: 13px;
+    top: 45px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 999;
+    text-align: left;
+    max-height: 70%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    opacity: 0.5;
+}
+
+#anchors-navbar:hover {
+    opacity: 1;
+}
+
+#anchors-navbar a {
+    color: #4183c4;
+}
+
+#anchors-navbar a:hover {
+    text-decoration: underline;
+}
+
+#anchors-navbar-header {
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+#anchors-navbar ul {
+    padding-left: 10px;
+    padding-right: 0;
+    margin-right: 0;
+}
+
+#anchors-navbar > ul {
+    display: none;
+    text-align: left;
+    margin-right: 20px;
+    margin-top: -5px;
+}
+
+#anchors-navbar:hover ul {
+    display: block;
+}
+
+#anchors-navbar > ul li {
+    list-style: none;
+    padding-top: 5px;
+}
+
+#anchors-navbar > ul li li {
+    padding-left: 15px;
+}
+
+#goTop {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    border: 1px solid rgba(128,128,128,0.5);
+    box-shadow: 0px 1px 2px rgba(128,128,128,0.5);
+    z-index: 998;
+    cursor: pointer;
+    font-size: 12px;
+    padding: 5px 10px;
+    color: inherit;
+    background-color: inherit;
+    opacity: 0.5;
+}
+
+#goTop:hover {
+    opacity: 1;
+}
+
+@media screen and (max-device-width: 769px) {
+    #anchors-navbar {
+        display: none;
+    }
+
+    #goTop {
+     display: none;
+    }
+}

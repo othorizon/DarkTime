@@ -1,3 +1,3 @@
 {
-    "plugins": ["my-navigator","submodule-summary"]
+    "plugins": ["my-navigator","pull-submodule"]
 }

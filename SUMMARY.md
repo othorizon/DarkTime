@@ -55,21 +55,6 @@
   * [附加文档](/linux/linux-addition.md)
 * mysql
   * [sql](/mysql/sql.md)
-* _book
-  * SpringBoot
-  * MacAwesome
-    * [[markdown使用](/markdown.md)](/_book/MacAwesome/SUMMARY.md)
-  * database
-  * 效率工具
-  * tomcat
-  * code_snippets
-  * 学习笔记
-  * gitbook
-    * gitbook/gitbook-plugin-my-navigator
-      * [neo-navigator](/_book/gitbook/gitbook-plugin-my-navigator/README.md)
-    * gitbook/fonts
-  * jenkins
-  * git
 * 学习笔记
   * [建站经历](/学习笔记/建站.md)
   * python

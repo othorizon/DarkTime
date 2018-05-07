@@ -146,3 +146,11 @@ scp -o ProxyCommand='ssh 10.69.57.76 -W %h:%p' ./test.txt 10.111.84.141:~/
 参考
 <a href='linux-addition.md#scp远程复制' >详细说明</a>
 [scp如何跨过中转主机直接传输文件？ - 知乎](https://www.zhihu.com/question/38216180)
+
+----
+
+## awk比较文件
+
+```bash
+awk -F,  -v OFS="," 'BEGIN{print "id,customer_id,product_type_name,product_subtype_id,measure_value,final_measure_value,bill_real_amount,measure_amount,discount,region_name,extra_params,diff"}FNR==NR{a[$1]=$7;next}{if(a[$1]!=$7)print $0,a[$1]-$7}' 96.csv 232.csv>diff96-232.csv
+```

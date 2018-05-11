@@ -49,6 +49,33 @@ echo \'测试替换\' |sed -E "s/'(.*替换)'/'新\1'/g"
 `-E` 扩展正则表达式 这样可以不用使用`\`来转义一些特殊字符了
 `\1`是占位符，表示正则中用`()`括起来的匹配内容，`&`表示全部匹配内容v
 
+### 删除字符
+
+[sed:删除命令d | 老段工作室](http://www.rhce.cc/1110.html)
+
+>employee.txt
+101,John Doe,CEO
+102,Jason Smith,IT Manager
+103,Raj Reddy,Sysadmin
+104,Anand Ram,Developer
+105,Jane Miller,Sales Manager
+
+删除第一次包含'Jason'的行到第四行(如果在前四行没有匹配'Jason'的行，这个命令只删除第四行以后匹配'Jason'的行)：
+
+```bash
+$ sed '/Jason/,4 d' employee.txt
+101,John Doe,CEO
+105,Jane Miller,Sales Manager
+```
+
+删除从第一次匹配'Raj'的行到最后一行：
+
+```bash
+$ sed '/Raj/,$ d' employee.txt
+101,John Doe,CEO
+102,Jason Smith,IT Manager
+```
+
 ----
 
 ## xargs

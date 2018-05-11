@@ -40,15 +40,18 @@
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
 * 云主机
   * [aliyun 主机的种种](/云主机/aliyun.md)
-* shell
-  * [自动生成bitbook的summary文件](/shell/生成gitbookSummary.md)
-  * [linux/mac 实用脚本](/shell/实用脚本.md)
-  * [批量处理文件内容脚本](/shell/批量处理文件内容.md)
 * maven
   * [maven使用](/maven/maven使用.md)
   * [仓库](/maven/maven仓库.md)
 * java
   * [java](/java/java.md)
+* 脚本
+  * python
+    * [批量请求url 解析json数据](/脚本/python/批量请求url.md)
+  * shell
+    * [自动生成bitbook的summary文件](/脚本/shell/生成gitbookSummary.md)
+    * [linux/mac 实用脚本](/脚本/shell/实用脚本.md)
+    * [批量处理文件内容脚本](/脚本/shell/批量处理文件内容.md)
 * nginx
   * [nginx](/nginx/nginx.md)
   * [ngix 文件浏览器 文件服务器](/nginx/nginx文件浏览器.md)

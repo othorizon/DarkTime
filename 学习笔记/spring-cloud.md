@@ -117,8 +117,8 @@ eureka.client.fetch-registry=false
 
 注释掉或者 在 application-peer1.properties 与 application-peer2.properties 中显示 指定 这两个属性值为true即可。
 
-(tag: spring boot配置文件加载顺序)
-**spring cloud属性加载顺序:**会按照下图的优先级加载，如果第一层没有配置key的值则去第二层查找，如果配置了则不会继续查找该key的值，
+(tag: spring boot 配置文件加载顺序)
+**spring cloud 属性加载顺序:**会按照下图的优先级加载，如果第一层没有配置key的值则去第二层查找，如果配置了则不会继续查找该key的值，
 **即低优先级的不会覆盖高优先级的值，只会补充没有配置的**。
 ![spring cloud属性加载顺序](media/2018-03-06-16-40-28.png)
 

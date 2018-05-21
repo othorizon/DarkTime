@@ -187,6 +187,7 @@ awk -F,  -v OFS="," 'BEGIN{print "id,customer_id,product_type_name,product_subty
 ### curl测试下载速度
 
 使用 cURL 度量 Web 站点的响应时间
+参考：[for循环测试速度](/脚本/shell/实用脚本.md#实用命令)
 
 ```bash
 $ curl -o /dev/null -s -w '%{time_connect}:%{time_starttransfer}:%{time_total}\n' 'http://kisspeach.com'

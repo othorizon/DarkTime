@@ -19,8 +19,9 @@
   * [druid使用](/database/druid.md)
 * 框架
   * [各种框架和工具](/框架/框架.md)
+* docker
+  * [spring boot 中使用docker](/docker/spring-boot-docker.md)
 * 效率工具
-  * [开源框架](/效率工具/开源框架.md)
   * [解决dns污染导致域名解析失败](/效率工具/dns-host.md)
   * [sonarqube 相关配置](/效率工具/sonarqube代码质量.md)
   * [Iterm2 使用](/效率工具/iterm.md)
@@ -51,6 +52,7 @@
   * shell
     * [自动生成bitbook的summary文件](/脚本/shell/生成gitbookSummary.md)
     * [linux/mac 实用脚本](/脚本/shell/实用脚本.md)
+    * [自动创建tomcat项目脚本](/脚本/shell/创建tomcat项目.md)
     * [批量处理文件内容脚本](/脚本/shell/批量处理文件内容.md)
 * nginx
   * [nginx](/nginx/nginx.md)
@@ -84,6 +86,9 @@
   * [git配置多个远程仓库](/git/git配置多个远程仓库.md)
 * 前端
   * [swig](/前端/swig.md)
+  * [解决跨域请求问题](/前端/跨域请求问题.md)
+  * [angularjs 学习](/前端/angularjs.md)
+  * [scriptbot的前端开发经验总结](/前端/scriptbot开发历程.md)
   * [各种资源](/前端/资源.md)
   * [一些有用的js代码](/前端/js代码块.md)
 

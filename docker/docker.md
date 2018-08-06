@@ -15,6 +15,23 @@
 `docker run -d -p 8100:8100 -v /root/workspace/projects/scriptbot-8100/docker_scriptbot.log:/scriptbot.log -v /root/workspace/projects/scriptbot-8100/scriptbot.jar:/scriptbot.jar --name scriptbot java:8 java -jar /scriptbot.jar --spring.profiles.active=demo  --server.port=8100 --logging.file=/scriptbot.log`
 通过挂载文件的方式启动
 
+### 离线安装镜像
+
+```bash
+# 1 拉取镜像
+docker pull images_names
+
+# 2 保存本地
+docker save [IMAGE ID/REPOSITORY]> /root/image.tar
+
+# 3 上传服务器后 加载镜像
+docker load < /root/image.tar
+```
+
+## Docker volume
+
+[理解Docker（8）：Docker 存储之卷（Volume） - SammyLiu - 博客园](https://www.cnblogs.com/sammyliu/p/5932996.html)
+
 ## 参考
 
 [在Docker容器中运行Spring Boot应用](https://blog.csdn.net/lsy0903/article/details/53048198/)
@@ -24,3 +41,9 @@
 [docker运行jar文件](https://blog.csdn.net/bianchengninhao/article/details/80143950)
 
 [Docker network第五讲-替代“--link”（Docker系列）](https://blog.csdn.net/zsl129/article/details/53939646)
+
+[离线服务器下docker的部署与应用](https://blog.csdn.net/u011372108/article/details/80549731)
+
+[**Docker镜像构建-构建yapi容器,从构建发布到可用**](https://juejin.im/post/5b4c518b6fb9a04fd4508af1)
+
+[Docker数据持久化与容器迁移 - shiningrise - 博客园](https://www.cnblogs.com/shiningrise/p/5821604.html)

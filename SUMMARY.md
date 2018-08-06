@@ -20,7 +20,7 @@
 * 框架
   * [各种框架和工具](/框架/框架.md)
 * docker
-  * [spring boot 中使用docker](/docker/spring-boot-docker.md)
+  * [docker](/docker/spring-boot-docker.md)
 * 效率工具
   * [解决dns污染导致域名解析失败](/效率工具/dns-host.md)
   * [sonarqube 相关配置](/效率工具/sonarqube代码质量.md)
@@ -32,6 +32,7 @@
   * [npm](/效率工具/npm.md)
   * [Visual Studio Code 的使用](/效率工具/VSCode.md)
   * [homebrew的使用](/效率工具/homebrew.md)
+  * [生产力工具](/效率工具/tools.md)
 * tomcat
   * [tomcat目录规范](/tomcat/tomcat规范.md)
 * code_snippets
@@ -46,6 +47,8 @@
   * [仓库](/maven/maven仓库.md)
 * java
   * [java](/java/java.md)
+* 大数据
+  * [大数据 学习札记](/大数据/大数据札记.md)
 * 脚本
   * python
     * [批量请求url 解析json数据](/脚本/python/批量请求url.md)

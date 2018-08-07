@@ -32,6 +32,14 @@ docker load < /root/image.tar
 
 [理解Docker（8）：Docker 存储之卷（Volume） - SammyLiu - 博客园](https://www.cnblogs.com/sammyliu/p/5932996.html)
 
+## CMD 与 ENTRYPOINT
+
+在Dockerfile中，只能有一个ENTRYPOINT指令，如果有多个ENTRYPOINT指令则以最后一个为准。  
+在Dockerfile中，只能有一个CMD指令，如果有多个CMD指令则以最后一个为准。  
+在Dockerfile中，ENTRYPOINT指令或CMD指令，至少必有其一。  
+任何docker run设置的命令参数或CMD指令的命令，都将作为ENTRYPOINT指令的命令参数，追加到ENTRYPOINT指令的命令之后。  
+如果没有ENTRYPOINT指令而是使用CMD作为启动命令，那么docker run设置的命令参数会覆盖CMD指令。  
+
 ## 参考
 
 [在Docker容器中运行Spring Boot应用](https://blog.csdn.net/lsy0903/article/details/53048198/)

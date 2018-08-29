@@ -32,10 +32,12 @@
 
 ### 监控
 
+[spring-boot-starter-actuator监控接口详解](https://www.jianshu.com/p/481134c3fab7)
 `Spring Boot Admin` 是一个管理和监控Spring Boot 应用程序的开源软件。每个应用都认为是一个客户端，通过HTTP或者使用 Eureka注册到admin server中进行展示，Spring Boot Admin UI部分使用AngularJs将数据展示在前端。[使用spring-boot-admin对spring-boot服务进行监控](http://www.ityouknow.com/springboot/2018/02/11/spring-boot-admin.html)
 
 ### 网关服务
 
+[springCloud（14）：使用Zuul构建微服务网关-路由端点与路由配置详解](http://blog.51cto.com/1754966750/1958422)
 提供一个对外的统一api接口，使外部的服务可以通过正常的http请求来访问注册到服务中心的服务
 请求方式：`{网关的host}:{port}/{注册到服务中心的application-name 小写}/REQUEST PATH` eg:`http://koyou.top:8020/customer-service/getNeoHello`
 

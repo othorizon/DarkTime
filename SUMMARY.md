@@ -5,6 +5,7 @@
   * [简单总结](/SpringBoot/简单总结.md)
   * [spring配置文件](/SpringBoot/spring配置.md)
   * [spring boot Configuration](/SpringBoot/springboot之Configuration.md)
+  * [spring boot 配置文件](/SpringBoot/springboot配置文件.md)
   * [spring boot 配置mybatis](/SpringBoot/springboot配置mybatis.md)
 * MacAwesome
   * [markdown使用](/MacAwesome/markdown.md)

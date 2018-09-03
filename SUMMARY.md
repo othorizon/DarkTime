@@ -38,6 +38,8 @@
   * [tomcat目录规范](/tomcat/tomcat规范.md)
 * code_snippets
 * 专题
+  * notelive
+    * [notelive 开发 札记](/专题/notelive/notelive开发.md)
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
@@ -65,10 +67,12 @@
   * [常用命令](/linux/linux-regular-cmd.md)
   * [linux脚本](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)
+  * [shell脚本](/linux/shell.md)
   * [附加文档](/linux/linux-addition.md)
 * mysql
   * [sql](/mysql/sql.md)
 * 学习笔记
+  * [centos常用环境安装](/学习笔记/centos装机.md)
   * [建站经历](/学习笔记/建站.md)
   * python
     * [爬虫教程](/学习笔记/python/爬虫.md)
@@ -78,6 +82,7 @@
   * [java code snippets](/学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](/学习笔记/spring-cloud-not-boot.md)
   * [spring cloud](/学习笔记/spring-cloud.md)
+  * [vim配置](/学习笔记/vim配置.md)
 * jenkins
   * [jenkins配置备份](/jenkins/jenkins配置.md)
   * [gitlab触发Jenkins 自动构建](/jenkins/gitlab触发jenkins自动构建.md)

@@ -73,3 +73,8 @@ hexo-generator-index-sticky    0.2.3   0.2.3   0.3.0  hexo-site
 # npm install xxx@x.x.x
 $ npm install hexo-generator-index-sticky@@latest
 ```
+
+## npm install
+
+>--save是对生产环境所需依赖的声明(开发应用中使用的框架，库),--save-dev是对开发环境所需依赖的声明(构建工具，测试工具).正常使用npm install时，会下载dependencies和devDependencies中的模块，当使用npm install --production或者注明NODE_ENV变量值为production时，只会下载dependencies中的模块。
+[npm介绍及常见命令](https://blog.csdn.net/altaba/article/details/77429398)

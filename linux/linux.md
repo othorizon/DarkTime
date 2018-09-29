@@ -1,6 +1,26 @@
-# linux脚本
+# linux
 
 [TOC]
+
+----
+
+## 用户管理
+
+```bash
+#查看所有用户可以cat一下
+cat /etc/passwd
+#查看所有用户组可以cat一下
+cat /etc/group
+
+useradd web #创建用户
+passwd web # 设置密码
+
+#将用户 user1 添加到组 group1
+usermod -aG group1 user1
+
+```
+
+[systemctl命令_Linux systemctl 命令用法详解：系统服务管理器指令](http://man.linuxde.net/systemctl)
 
 ----
 

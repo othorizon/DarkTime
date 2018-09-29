@@ -2,11 +2,14 @@
 
 ## 常用命令
 
-`docker run -d -p 8100:8100 --name scriptbot_1 scriptbot -it`
+`docker run -d -p 8100:8100 --name custome_name -it IMAGE_NAME`
 `-d` 后台
 `-i` 让容器的标准输入保持打开
 `-t` 让docker分配一个伪终端并绑定到容器的标准输入上
+`-e` username="ritchie"  设置环境变量；
 >`-i`打开了输入，`-t`模拟一个终端
+
+`docker run --rm image_name [cmd]`  --rm 参数会在容器退出时自动删除容器以及产生volume,一般在测试的时候会用
 
 `docker start CONTAINER_ID` 启动容器,使用`-i`参数可以打开标准输入
 
@@ -182,6 +185,8 @@ $ docker run -d -v hello:/world busybox ls /world
 docker-compose up -d [service]
 #start/stop/restart/kill 服务:
 docker-compose start/stop/restart/kill [service]
+# Stops containers and removes containers, networks, volumes(-v参数), and images(--rmi参数)
+docker-compose down -v
 ```
 
 [Compose 命令说明 - Docker &mdash;&mdash; 从入门到实践 - 极客学院Wiki](http://wiki.jikexueyuan.com/project/docker-technology-and-combat/commands.html)

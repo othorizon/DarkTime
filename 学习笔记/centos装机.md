@@ -65,6 +65,26 @@ step2:添加可执行权限
 `chmod +x /usr/local/bin/docker-compose`
 `docker-compose --version`
 
+step3: [可选] 安装 命令行提示
+[Command-line completion](https://docs.docker.com/compose/completion/)
+
+**使用国内docker仓库源**
+
+针对Docker客户端版本大于 1.10.0 的用户
+您可以通过修改daemon配置文件/etc/docker/daemon.json来使用加速器(没有这个文件可以创建)
+从这个地址获取aliyun专属源地址:https://cr.console.aliyun.com/cn-hangzhou/mirrors
+
+```bash
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+    "registry-mirrors": ["https://****.mirror.aliyuncs.com","https://registry.docker-cn.com","https://hub-mirror.c.163.com"]
+}
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
 ## 安装nginx
 
 参考：https://www.jianshu.com/p/1cad13e57c43

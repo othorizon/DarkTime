@@ -29,6 +29,7 @@
   * [gitbook](/效率工具/gitbook.md)
   * [github awesome github资源推荐](/效率工具/githubAwesome.md)
   * [linux中的office](/效率工具/linux-office.md)
+  * [linux screen 工具](/效率工具/screen.md)
   * [简单Mock服务（moco）](/效率工具/mock-server.md)
   * [npm](/效率工具/npm.md)
   * [Visual Studio Code 的使用](/效率工具/VSCode.md)
@@ -38,7 +39,9 @@
   * [tomcat目录规范](/tomcat/tomcat规范.md)
 * code_snippets
 * 专题
+  * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
   * notelive
+    * [文章框架](/专题/notelive/notelive框架.md)
     * [notelive 开发 札记](/专题/notelive/notelive开发.md)
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
@@ -49,8 +52,13 @@
   * [maven使用](/maven/maven使用.md)
   * [仓库](/maven/maven仓库.md)
 * java
+  * [java 开发常用工具类](/java/utils.md)
   * [java](/java/java.md)
 * 大数据
+  * [kafka](/大数据/kafka.md)
+  * [gobblin](/大数据/gobblin.md)
+  * [sqoop源码解析](/大数据/sqoop.md)
+  * [hadoop map reduce](/大数据/mapreduce.md)
   * [大数据 学习札记](/大数据/大数据札记.md)
 * 脚本
   * python
@@ -64,8 +72,9 @@
   * [nginx](/nginx/nginx.md)
   * [ngix 文件浏览器 文件服务器](/nginx/nginx文件浏览器.md)
 * linux
+  * [ftp](/linux/ftp.md)
   * [常用命令](/linux/linux-regular-cmd.md)
-  * [linux脚本](/linux/linux.md)
+  * [linux](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)
   * [shell脚本](/linux/shell.md)
   * [附加文档](/linux/linux-addition.md)
@@ -73,6 +82,7 @@
   * [sql](/mysql/sql.md)
 * 学习笔记
   * [centos常用环境安装](/学习笔记/centos装机.md)
+  * [gradle 学习](/学习笔记/gradle.md)
   * [建站经历](/学习笔记/建站.md)
   * python
     * [爬虫教程](/学习笔记/python/爬虫.md)

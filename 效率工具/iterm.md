@@ -43,4 +43,9 @@
 [ssh省去重复输入密码](http://blog.csdn.net/xuanwu_yan/article/details/45666797)
 [ssh省去重复输入密码-evernote](https://app.yinxiang.com/shard/s9/nl/679699/b7e80339-71b2-461f-b45d-194a6ef9b767/)
 
+## local echo
 
+解决ssh网速满，导致打字卡顿问题。
+原因是 ssh时每个输入字符都会向远端发送数据，所以可以开启local ehco 和local line Editing。
+详见：[ssh 打字卡顿 - SegmentFault 思否](https://segmentfault.com/q/1010000000150459)
+可以使用mosh这个工具，[Mosh: the mobile shell](https://mosh.org/#usage)

@@ -4,6 +4,13 @@
 
 ----
 
+常用
+
+```bash
+ps -efww # 加上 ww可以显示完整的cmd
+
+```
+
 ## 用户管理
 
 ```bash
@@ -18,9 +25,97 @@ passwd web # 设置密码
 #将用户 user1 添加到组 group1
 usermod -aG group1 user1
 
+#查看在线用户
+who
+w
+who am i
+#登出用户
+pkill -kill -t pts/1
+
 ```
 
 [systemctl命令_Linux systemctl 命令用法详解：系统服务管理器指令](http://man.linuxde.net/systemctl)
+
+### 其他设置
+
+[centos修改主机名的正确方法](https://www.cnblogs.com/zhaojiedi1992/p/zhaojiedi_linux_043_hostname.html)
+`hostnamectl set-hostname centos77.magedu.com             # 使用这个命令会立即生效且重启也生效`
+
+## 系统相关
+
+### 开关机
+
+[shutdown 中文手册 [金步国]](http://www.jinbuguo.com/systemd/shutdown.html)
+
+### 系统启动
+
+`shutdown -r now` 立即重启
+
+`systemctl list-unit-files` 可以查看开机启动项,左边是服务名称，右边是状态，enabled是开机启动，disabled是开机不启动
+
+#### 图形界面
+
+>Linux系统的7个运行级别(runlevel)
+运行级别0：系统停机状态，系统默认运行级别不能设为0，否则不能正常启动
+运行级别1：单用户工作状态，root权限，用于系统维护，禁止远程登陆
+运行级别2：多用户状态(没有NFS)
+运行级别3：完全的多用户状态(有NFS)，登陆后进入控制台命令行模式
+运行级别4：系统未使用，保留
+运行级别5：X11控制台，登陆后进入图形GUI模式
+运行级别6：系统正常关闭并重启，默认运行级别不能设为6，否则不能正常启动
+
+切换级别： `init N`
+init 3 关闭图形界面，init 5 打开图形界面
+
+**默认启动级别配置**
+
+/etc/inittab 文件内容如下：
+
+```bash
+# systemd uses 'targets' instead of runlevels. 
+# by default, there are two main targets:
+#
+# multi-user.target: analogous to runlevel 3
+# graphical.target: analogous to runlevel 5
+#
+# To view current default target, run:
+# systemctl get-default
+#
+# To set a default target, run:
+# systemctl set-default TARGET.target
+```
+
+`systemctl get-default`查看默认的target
+`systemctl set-default multi-user.target` 命令行界面启动系统
+`systemctl set-default graphical.target` 图形界面启动系统
+
+----
+
+## 杂项
+
+### 端口转发 端口映射
+
+[SSH隧道：内网穿透实战](https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html)
+
+```bash
+ssh -v -C -N -L 5901:localhost:5902 hostB
+# 通过hostB的ssh通道，将本地的5901端口转发到localhost的5902
+# 在这个例子里目标localhost也就是hostB机器
+# -v debug信息，-C 压缩 -N 不执行远程登陆，用于端口转发场景。 -L 映射本地端口到远程服务器
+# -R 映射远程端口到本地
+```
+
+### 创建环境变量
+
+全局针对所有用户的环境变量可在`/etc/profile.d/`目录下通过创建一个sh脚本来实现，这样方便维护，例如：
+
+```bash
+$ cat /etc/profile.d/path.sh
+
+# mvn
+export M2_HOME=/usr/local/apps/apache-maven-3.5.4
+export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
+```
 
 ----
 

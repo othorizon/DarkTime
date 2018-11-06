@@ -25,6 +25,8 @@ Docker Volume
 `docker run --name container-test -v /data debian /bin/bash` ：将`/data`挂在到容器中，文件可以在主机直接操作，`docker inspect -f {{.Volumes}} container-test`可以看到该volume在主机上的存储位置。dockerfile文件中的`VOLUME /data`是一样的效果。
 `docker run -v /home/adrian/data:/data debian ls /data`：这种方式使用`-v`可以明确指定将主机的目录`/home/adrian/data`挂载到容器内的`/data`上
 
+[docker磁盘占用空间查看及清理](https://blog.csdn.net/weixin_32820767/article/details/81196250)
+
 ### 离线安装镜像
 
 ```bash

@@ -20,7 +20,8 @@ apt install python3.4
 
 ### 安装jupyterlab
 
-[https://hub.docker.com/r/jupyter/datascience-notebook/](https://hub.docker.com/r/jupyter/datascience-notebook/)
+帮助文档 [The Jupyter Notebook &mdash; Jupyter Notebook 5.7.2 documentation](https://jupyter-notebook.readthedocs.io/en/stable/index.html)  
+docker镜像 [https://hub.docker.com/r/jupyter/datascience-notebook/](https://hub.docker.com/r/jupyter/datascience-notebook/)  
 官方的datascience镜像整合了很多东西，也可以选择使用base镜像。  
 默认启用的是经典的jupyter，如果想使用正在测试的jupyterlab可以执行docker时增加cmd：`start.sh jupyter lab`。  
 start.sh和start-notebook.sh提供了很多可选参数，参考[Common Features docker-stacks documentation](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#start-sh)  

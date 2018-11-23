@@ -47,6 +47,8 @@
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
+* python
+  * [python 学习](/python/python_school.md)
 * 云主机
   * [aliyun 主机的种种](/云主机/aliyun.md)
 * maven

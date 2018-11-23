@@ -514,3 +514,156 @@ public class Task implements TaskIFace {
 
 }
 ```
+
+### workunit的流转
+
+在JobLauncher中调用source组件生成workunit然后生成hadoopjob去执行wu。
+
+```java
+package org.apache.gobblin.runtime;
+
+public abstract class AbstractJobLauncher implements JobLauncher {
+  @Override
+  public void launchJob(JobListener jobListener) hrows JobException {
+    //省略...
+    Source<?, ?> source = this.jobContext.getSource();
+    //1. 调用source组件生成workunit
+    if (source instanceof WorkUnitStreamSource) {
+      workUnitStream = ((WorkUnitStreamSource) source).getWorkunitStream(jobState);
+    } else {
+      workUnitStream = new BasicWorkUnitStream.Builder(source.getWorkunits(jobState)).build();
+    }
+    //省略...
+    //2. Start the job and wait for it to finish
+    // 见下方 MRJobLauncher$runWorkUnits 代码
+    runWorkUnitStream(workUnitStream);
+    //省略...
+  }
+}
+```
+
+```java
+package org.apache.gobblin.runtime.mapreduce;
+
+public class MRJobLauncher extends AbstractJobLauncher {
+    protected void runWorkUnits(List<WorkUnit> workUnits) throws Exception {
+      //省略...
+      prepareHadoopJob(workUnits);
+      //省略...
+      this.job.waitForCompletion(true);
+      //省略...
+    }
+}
+  /**
+   * Prepare the Hadoop MR job, including configuring the job and setting up the input/output paths.
+   */
+  private void prepareHadoopJob(List<WorkUnit> workUnits) throws IOException {
+    TimingEvent mrJobSetupTimer = this.eventSubmitter.getTimingEvent(TimingEvent.RunJobTimings.MR_JOB_SETUP);
+
+    // Add dependent jars/files
+    addDependencies(this.job.getConfiguration());
+
+    this.job.setJarByClass(MRJobLauncher.class);
+    this.job.setMapperClass(TaskRunner.class);
+
+    // The job is mapper-only
+    this.job.setNumReduceTasks(0);
+
+    this.job.setInputFormatClass(GobblinWorkUnitsInputFormat.class);
+    this.job.setOutputFormatClass(GobblinOutputFormat.class);
+    this.job.setMapOutputKeyClass(NullWritable.class);
+    this.job.setMapOutputValueClass(NullWritable.class);
+
+    // Set speculative execution
+
+    this.job.setSpeculativeExecution(isSpeculativeExecutionEnabled(this.jobProps));
+
+    this.job.getConfiguration().set("mapreduce.job.user.classpath.first", "true");
+
+    // Job input path is where input work unit files are stored
+
+    // Prepare job input
+    // wu文件写入hdfs
+    prepareJobInput(workUnits);
+    // 设置inputPath
+    FileInputFormat.addInputPath(this.job, this.jobInputPath);
+
+    // Job output path is where serialized task states are stored
+    FileOutputFormat.setOutputPath(this.job, this.jobOutputPath);
+
+    // Serialize source state to a file which will be picked up by the mappers
+    serializeJobState(this.fs, this.mrJobDir, this.conf, this.jobContext.getJobState(), this.job);
+
+    if (this.jobProps.containsKey(ConfigurationKeys.MR_JOB_MAX_MAPPERS_KEY)) {
+      GobblinWorkUnitsInputFormat.setMaxMappers(this.job,
+          Integer.parseInt(this.jobProps.getProperty(ConfigurationKeys.MR_JOB_MAX_MAPPERS_KEY)));
+    }
+
+    mrJobSetupTimer.stop();
+  }
+```
+
+### mapreduce相关
+
+**map分块**
+hadoopjob的`GobblinWorkUnitsInputFormat`中的`getSplits`方法决定了map分块的方式和数量，
+在`KafkaSource`中，`getWorkunits`方法是按照partition和`mr.job.max.mappers`参数配置来决定生成的wu的数量，
+比如map数量为默认值100，topic的分区数量为2，那么就会生成100个multiworkunit，其中有两个是有job的，对应topic的两个分区，其余的job均为空，如果分区数量大于map数量，那么其中便会有一些multiworkunit去获取多个分区的数据。
+
+```java
+package org.apache.gobblin.source.extractor.extract.kafka;
+
+public abstract class KafkaSource<S, D> extends EventBasedSource<S, D> {
+  public List<WorkUnit> getWorkunits(SourceState state) {
+    //省略...
+    Map<String, List<WorkUnit>> workUnits = Maps.newConcurrentMap();
+    //根据topic创建WorkUnitCreator
+    for (KafkaTopic topic : topics) {
+        threadPool.submit(
+            new WorkUnitCreator(topic, state, Optional.fromNullable(topicSpecificStateMap.get(topic.getName())),
+                workUnits));
+      }
+    //省略...
+    //获取map数量
+    int numOfMultiWorkunits =
+          state.getPropAsInt(ConfigurationKeys.MR_JOB_MAX_MAPPERS_KEY, ConfigurationKeys.DEFAULT_MR_JOB_MAX_MAPPERS);
+    //KafkaWorkUnitPacker是用来合并空的任务以及将workunit分配到numOfMultiWorkunits指定的数量的map上，见KafkaSingleLevelWorkUnitPacker
+    List<WorkUnit> workUnitList = KafkaWorkUnitPacker.getInstance(this, state).pack(workUnits, numOfMultiWorkunits);
+    //省略...
+  }
+  private class WorkUnitCreator implements Runnable {
+    @Override
+    public void run() {
+      //省略...
+      //生成workunit
+      this.allTopicWorkUnits.put(this.topic.getName(),
+          KafkaSource.this.getWorkUnitsForTopic(this.topic, this.state, this.topicSpecificState));
+      //省略...
+    }
+  }
+
+  private List<WorkUnit> getWorkUnitsForTopic(KafkaTopic topic, SourceState state, Optional<State> topicSpecificState) {
+    Timer.Context context = this.metricContext.timer("isTopicQualifiedTimer").time();
+    boolean topicQualified = isTopicQualified(topic);
+    context.close();
+
+    List<WorkUnit> workUnits = Lists.newArrayList();
+    for (KafkaPartition partition : topic.getPartitions()) {
+      WorkUnit workUnit = getWorkUnitForTopicPartition(partition, state, topicSpecificState);
+      this.partitionsToBeProcessed.add(partition);
+      if (workUnit != null) {
+
+        // For disqualified topics, for each of its workunits set the high watermark to be the same
+        // as the low watermark, so that it will be skipped.
+        if (!topicQualified) {
+          skipWorkUnit(workUnit);
+        }
+        workUnits.add(workUnit);
+      }
+    }
+    return workUnits;
+  }
+}
+
+
+```

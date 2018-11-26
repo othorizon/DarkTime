@@ -42,3 +42,56 @@ python2 -m ipykernel install --user
 python3 -m pip install ipykernel
 python3 -m ipykernel install --user
 ```
+
+### 环境常见问题
+
+#### mac python2.7 报错 ImportError: No module named zlib
+
+[[已解决] mac python2.7 报错 ImportError: No module named zlib - V2EX](https://www.v2ex.com/t/511697)
+
+解决了，用 brew 安装 python@2 时，其中有个警告时需要 apple commandline tools，如果没有他会从源码编译一个 python 出来，所以仍然可以安装上，但是这个是不 适配的，所以安装上命令行工具后(`xcode-select --install`)，再重新装一遍 python 就好了(`brew reinstall python@2`)
+
+以下为原帖：
+
+mac 系统，装了 python2 和 python3，但是执行 python2.7.10 的 pip 命令会报错。
+
+```bash
+Traceback (most recent call last):
+  File "/usr/local/bin/pip", line 11, in <module>
+    load_entry_point('pip==18.0', 'console_scripts', 'pip')()
+  File "/usr/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 484, in load_entry_point
+    return get_distribution(dist).load_entry_point(group, name)
+  File "/usr/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2714, in load_entry_point
+    return ep.load()
+  File "/usr/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2332, in load
+    return self.resolve()
+  File "/usr/local/lib/python2.7/site-packages/pkg_resources/__init__.py", line 2338, in resolve
+    module = __import__(self.module_name, fromlist=['__name__'], level=0)
+  File "/usr/local/lib/python2.7/site-packages/pip/_internal/__init__.py", line 20, in <module>
+    from pip._vendor.urllib3.exceptions import DependencyWarning
+  File "/usr/local/lib/python2.7/site-packages/pip/_vendor/urllib3/__init__.py", line 8, in <module>
+    from .connectionpool import (
+  File "/usr/local/lib/python2.7/site-packages/pip/_vendor/urllib3/connectionpool.py", line 36, in <module>
+    from .response import HTTPResponse
+  File "/usr/local/lib/python2.7/site-packages/pip/_vendor/urllib3/response.py", line 3, in <module>
+    import zlib
+ImportError: No module named zlib
+```
+
+python 是用 homebrew 安装的。
+
+网上说要安装 zlib 库，可是 mac 系统是自带一个版本的 zlib 的，我没法再装一个其他版本的吧？会冲突吧？
+用 brew 安装 zlib 时的提示：
+
+```bash
+zlib: stable 1.2.11 (bottled) [keg-only]
+General-purpose lossless data-compression library
+https://zlib.net/
+/usr/local/Cellar/zlib/1.2.11 (12 files, 373KB)
+  Poured from bottle on 2018-11-26 at 18:31:13
+From: https://github.com/Homebrew/homebrew-core/blob/master/Formula/zlib.rb
+==> Caveats
+zlib is keg-only, which means it was not symlinked into /usr/local,
+because macOS already provides this software and installing another version in
+parallel can cause all kinds of trouble.
+```

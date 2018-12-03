@@ -1,6 +1,7 @@
 # 资料整理
 
-[My Blog](rizon.top)
+[目录](https://othorizon.github.io/CodeSnippets/SUMMARY)  
 
-[gitbook](https://othorizon.gitbooks.io/codesnippets/) 
-[github pages](https://othorizon.github.io/CodeSnippets/)
+[GitBook](https://othorizon.gitbooks.io/codesnippets/)  
+
+[My Blog](rizon.top)  

@@ -43,6 +43,24 @@ python3 -m pip install ipykernel
 python3 -m ipykernel install --user
 ```
 
+### 安装python版本管理，包管理，虚拟环境 工具
+
+virtualenv 、pyenv、Anaconda 均可以进行python的版本管理和包管理  
+Anaconda是一个用于科学计算的Python发行版，自带了Numpy、Sklearn等机器学习相关的库  
+Virtualenv是一个Python虚拟环境库，用来创建一个新的Python环境  
+pyenv也是一个python虚拟环境工具，但是已经很久没有更新支持了  
+
+**安装virtualenv**
+[Installation - virtualenv 16.1.0 documentation](https://virtualenv.pypa.io/en/latest/installation/)
+[virtualenv-廖雪峰的官方网站](https://www.liaoxuefeng.com/wiki/0014316089557264a6b348958f449949df42a6d3a2e542c000/001432712108300322c61f256c74803b43bfd65c6f8d0d0000)
+
+Python3.3以上的版本通过venv模块原生支持虚拟环境，可以代替Python之前的virtualenv。
+
+```bash
+python3 -m venv ./venv
+./venv/bin/activate
+````
+
 ### 环境常见问题
 
 #### mac python2.7 报错 ImportError: No module named zlib
@@ -95,3 +113,26 @@ zlib is keg-only, which means it was not symlinked into /usr/local,
 because macOS already provides this software and installing another version in
 parallel can cause all kinds of trouble.
 ```
+
+## 项目开发
+
+python项目开发中的知识
+
+### 项目交付
+
+**依赖管理**
+python中项目使用了那些第三方库，可以使用如下命令导出和导入。参考：[Python项目交付中环境迁移问题](https://www.jianshu.com/p/28b64c050f42)
+
+```bash
+# 导出所有库及库的版本到文件
+pip freeze > requirements.txt
+# 从文件安装依赖
+pip install -r requirements.txt
+
+# conda中的使用
+conda env export > environment.yml
+conda env create -f environment.yml
+```
+
+**项目迁移**
+如果想要迁移项目，众多依赖包重新下载很费劲，但如果你的项目使用了虚拟环境，比如`virtualenv`，那么可以带着虚拟环境一起打包迁移。

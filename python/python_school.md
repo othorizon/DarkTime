@@ -114,6 +114,17 @@ because macOS already provides this software and installing another version in
 parallel can cause all kinds of trouble.
 ```
 
+---
+
+## 知识
+
+**__init__.py的作用**
+[Python杂谈: __init__.py的作用](https://www.cnblogs.com/tp1226/p/8453854.html)
+
+>python2中一个目录只有带有`__init__.py`才能识别会一个模块，使用import导入，但是在python3中，就算没有这个文件也可以作为模块导入。
+
+---
+
 ## 项目开发
 
 python项目开发中的知识

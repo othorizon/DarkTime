@@ -49,6 +49,7 @@
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
 * python
   * [python 学习](/python/python_school.md)
+  * [Python 修饰器的一些小细节](/python/decorator.md)
 * 云主机
   * [aliyun 主机的种种](/云主机/aliyun.md)
 * maven

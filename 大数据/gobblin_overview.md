@@ -27,7 +27,7 @@ Writer and Publisher：内部使用基于时间的writer和基于时间的publis
 ![架构](https://ask.qcloudimg.com/http-save/yehe-2725853/v74nkx004r.jpeg?imageView2/2/w/1620)
 ![流程](https://upload-images.jianshu.io/upload_images/6504531-275a78b3b2639564.jpg)
 ![流程2](https://ask.qcloudimg.com/http-save/yehe-2725853/mlw4m84zp1.jpeg?imageView2/2/w/1620)
-![自制](/大数据/gobblin-kafka.jpg)
+![自制](gobblin-kafka.jpg)
 
 ## Task
 

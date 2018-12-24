@@ -11,12 +11,18 @@ apt install python2.7
 apt install python3.4
 ```
 
+[CentOS 7 安装 Python 3.6 | CentOS教程 - 与知](https://www.yuzhi100.com/tutorial/centos/centos-anzhuang-python36)
+
 安装pip
 >pip is already installed if you are using Python 2 >=2.7.9 or Python 3 >=3.4 downloaded from python.org or if you are working in a Virtual Environment created by virtualenv or pyvenv. Just make sure to upgrade pip.  
 [Installation &#8212; pip 18.1 documentation](https://pip.pypa.io/en/stable/installing/)
 
 [同时安装 Python 2 与Python 3 的方法及pip模块的下载安装 - 天木星辰 - 博客园](https://www.cnblogs.com/zcool/p/7147245.html)  
 使用这个脚本[get-pip.py](https://bootstrap.pypa.io/get-pip.py),使用不同版本的python运行就会安装对应的pip。
+
+安装pip的其他方式：
+`apt-get install python3-pip` [I have python3.4 but no pip or ensurepip.. is something wrong with my python3.4 version?](https://stackoverflow.com/questions/29871372/i-have-python3-4-but-no-pip-or-ensurepip-is-something-wrong-with-my-python3-4)
+`python -m ensurepip` [python3.6 安装后没有pip? - 知乎](https://www.zhihu.com/question/54906859)
 
 ### 安装jupyterlab
 
@@ -122,6 +128,52 @@ parallel can cause all kinds of trouble.
 [Python杂谈: __init__.py的作用](https://www.cnblogs.com/tp1226/p/8453854.html)
 
 >python2中一个目录只有带有`__init__.py`才能识别会一个模块，使用import导入，但是在python3中，就算没有这个文件也可以作为模块导入。
+
+**空值与空对象判断**
+[Python中的空值判断](https://www.jianshu.com/p/a0d273550f70)
+[Python中的NULL和None](https://blog.csdn.net/songyunli1111/article/details/75145533)  [python中的null值](https://www.cnblogs.com/landhu/p/6497975.html)
+
+>python是把0，空字符串‘’，空列表[]和None都看作False，把其他数值和非空字符串都看作True
+
+**命令行调用python的几种方式**
+
+已如下项目结构为例:
+
+```bash
+# 目录结构如下
+package/
+    __init__.py
+    mod1.py
+package2/
+    __init__.py
+    run.py
+```
+
+```python
+# run.py 内容如下
+import sys
+from package import mod1
+print(sys.path)
+```
+
+启动方式：
+
+```bash
+# 直接启动（失败）
+$ python package2/run.py
+Traceback (most recent call last):
+  File "package2/run.py", line 2, in <module>
+    from package import mod1
+ImportError: No module named package
+
+# 以模块方式启动（成功） -m 方式启动类似于import模块的操作，会把当前执行目录('')加入sys.path中
+$ python -m package2.run
+['',
+'/usr/local/Cellar/python/2.7.11/Frameworks/Python.framework/Versions/2.7/lib/python27.zip',...]
+
+# 设置PYTHONPATH变量 (成功)
+$ PYTHONPATH=. python package2/run.py
+```
 
 ---
 

@@ -61,6 +61,7 @@
 * 大数据
   * [kafka](/大数据/kafka.md)
   * [gobblin](/大数据/gobblin.md)
+  * [sqoop 简介及使用](/大数据/sqoop_overview.md)
   * [gobblin](/大数据/gobblin_overview.md)
   * [sqoop源码解析](/大数据/sqoop.md)
   * [hadoop map reduce](/大数据/mapreduce.md)

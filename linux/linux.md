@@ -117,6 +117,11 @@ export M2_HOME=/usr/local/apps/apache-maven-3.5.4
 export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
 ```
 
+### 零散
+
+[Why is scp so slow and how to make it faster?](https://unix.stackexchange.com/questions/238152/why-is-scp-so-slow-and-how-to-make-it-faster)
+在大文件慢网速的情况下，尽量使用`rsync`代替`scp`，rsync支持断点续传。
+
 ----
 
 ## 字符串操作详解

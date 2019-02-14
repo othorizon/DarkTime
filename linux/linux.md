@@ -324,3 +324,42 @@ time_namelookup | DNS解析时间,从请求开始到DNS解析完毕所用时间(
 speed_download | 下载速度，单位-字节每秒
 
 这些计时器都相对于事务的起始时间,甚至要先于 Domain Name Service（DNS）查询.因此,在发出请求之后,Web 服务器处理请求并开始发回数据所用的时间是 0.272 – 0.081 = 0.191 秒.客户机从服务器下载数据所用的时间是 0.779 – 0.272 = 0.507 秒. 通过观察curl数据及其随时间变化的趋势,可以很好地了解站点对用户的响应性.以上变量会按CURL认为合适的格式输出，输出变量需要按照%{variable_name}的格式，如果需要输出%，double一下即可，即%%，同时，\n是换行，\r是回车，\t是TAB。 当然,Web 站点不仅仅由页面组成.它还有图像、JavaScript 代码、CSS 和 cookie 要处理，curl很适合了解单一元素的响应时间,但是有时候需要了解整个页面的装载速度.
+
+## linux wifi使用手册
+
+[How do I connect to a WiFi network using nmcli?](https://askubuntu.com/questions/377687/how-do-i-connect-to-a-wifi-network-using-nmcli)
+[nmcli 命令行方式连接wifi及删除连接操作](http://www.huangea.com/?p=845)
+[linux 无线网卡的连接（命令行） Part2 —— network-manager(nmcli)](https://blog.csdn.net/gw569453350game/article/details/53261772)
+
+使用network-manager 管理wifi，更为方便
+
+列出wifi
+`nmcli device wifi rescan` `nmcli d wifi list`
+
+连接一个新的wifi
+`nmcli device wifi connect <AP name> password <password>`
+
+切换已经保存过的wifi连接
+
+```bash
+nmcli connection { COMMAND | help }
+   COMMAND := { list | status | up | down | delete }
+
+   list [id <id> | uuid <id>]
+   status [id <id> | uuid <id> | path <path>]
+   up id <id> | uuid <id> [iface <iface>] [ap <BSSID>] [--nowait] [--timeout <timeout>]
+   down id <id> | uuid <id>
+   delete id <id> | uuid <id>
+```
+
+列出当前连接
+
+```bash
+$ nmcli connection show
+
+NAME                      UUID                                   TYPE              TIMESTAMP-REAL
+Rishbh-Q1000              cd79a7a1-1cf4-49c3-ad58-21ab17d1ba05   802-11-wireless   Thursday 18 September 2014 05:32:34 PM IST
+```
+
+连接/切换wifi
+`nmcli c up uuid cd79a7a1-1cf4-49c3-ad58-21ab17d1ba05`  `nmcli c up id Rishbh-Q1000`

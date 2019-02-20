@@ -40,6 +40,7 @@
   * [tomcat目录规范](/tomcat/tomcat规范.md)
 * code_snippets
 * 专题
+  * [RESTful API](/专题/restfulapi.md)
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
   * notelive
     * [文章框架](/专题/notelive/notelive框架.md)
@@ -79,6 +80,7 @@
   * [ngix 文件浏览器 文件服务器](/nginx/nginx文件浏览器.md)
 * linux
   * [ftp](/linux/ftp.md)
+  * [linux 运维](/linux/运维.md)
   * [常用命令](/linux/linux-regular-cmd.md)
   * [linux](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)

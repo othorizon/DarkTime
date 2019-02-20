@@ -35,3 +35,28 @@ taskResponses=taskResponses.stream()
                                 BinaryOperator.maxBy(Comparator.comparing(StandardTaskController.TaskResponse::getCreateTime)))),
                                                         r -> new ArrayList<>(r.values())));
 ```
+
+### toMap
+
+```java
+public Map<KeyMapper.Type, Map<String, String>> getKeyMapper() {
+        List<KeyMapper> mapper = bossRuleService.getKeyMapper();
+        Map<KeyMapper.Type, List<KeyMapper>> collect = mapper.stream()
+                .collect(Collectors.groupingBy(KeyMapper::getType));
+        Map<KeyMapper.Type, Map<String, String>> keyMapper = new HashMap<>();
+        for (Map.Entry<KeyMapper.Type, List<KeyMapper>> entry : collect.entrySet()) {
+            //得到一个忽略大小写的map
+            Map<String, String> map = entry.getValue().stream()
+                    .collect(Collectors.toMap(m -> m.bossKey, m -> m.billKey,
+                            (u, v) -> {
+                                throw new IllegalStateException(String.format("同一个bossKey却存在两个billKey,key1:%s,key2:%s", u,v));
+                            },
+                            CaseInsensitiveMap::new));
+            keyMapper.put(entry.getKey(), map);
+        }
+        if (MapUtils.isEmpty(keyMapper)) {
+            throw new RuntimeException("keyMapper 映射数据集合为空");
+        }
+        return keyMapper;
+    }
+```

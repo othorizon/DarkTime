@@ -13,6 +13,27 @@
 [Nginx+Https配置 - 倚楼听风雨 - SegmentFault 思否](https://segmentfault.com/a/1190000004976222)
 [官方-配置HTTPS服务器](http://tengine.taobao.org/nginx_docs/cn/docs/http/configuring_https_servers.html)
 
+```nginx
+server {
+    listen       443 ssl http2;
+    listen       [::]:443 ssl http2;
+    server_name *.rizon.top;
+    ssl on;
+    root html;
+    index index.html index.htm;
+    ssl_certificate   /etc/nginx/cert/certificate.pem;
+    ssl_certificate_key  /etc/nginx/cert/certificate.key;
+    ssl_session_timeout 5m;
+    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_prefer_server_ciphers on;
+    location / {
+        root /home/website;
+        index index.html index.htm;
+    }
+}
+```
+
 ## nginx 配置301跳转
 
 [Nginx环境强制http 301跳转https设置记录](http://www.laozuo.org/9953.html)

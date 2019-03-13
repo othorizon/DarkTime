@@ -27,6 +27,8 @@ Docker Volume
 
 [docker磁盘占用空间查看及清理](https://blog.csdn.net/weixin_32820767/article/details/81196250)
 
+`docker run -it  --entrypoint="/bin/bash" image:tag` 使用--entrypoint覆盖入口
+
 ### 离线安装镜像
 
 ```bash

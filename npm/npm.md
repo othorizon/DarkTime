@@ -24,6 +24,11 @@ npm install xxx –save-dev
 npm uninstall xxx
 ## 删除全局模块xxx
 npm uninstall -g xxx
+
+# 执行安装到本地的模块
+npx xxx
+`npm bin`/xxx # npm bin 命令会返回bin的安装目录
+
 ```
 
 ## 资料

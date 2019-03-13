@@ -334,10 +334,12 @@ speed_download | 下载速度，单位-字节每秒
 使用network-manager 管理wifi，更为方便
 
 列出wifi
-`nmcli device wifi rescan` `nmcli d wifi list`
+`nmcli device wifi`  `nmcli d wifi list`  
+重新扫描  
+`nmcli device wifi rescan`  
 
-连接一个新的wifi
-`nmcli device wifi connect <AP name> password <password>`
+连接一个新的wifi  
+`nmcli device wifi connect <AP name> password <password>`  
 
 切换已经保存过的wifi连接
 

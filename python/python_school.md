@@ -64,7 +64,7 @@ Python3.3以上的版本通过venv模块原生支持虚拟环境，可以代替P
 
 ```bash
 python3 -m venv ./venv
-./venv/bin/activate
+source ./venv/bin/activate
 ````
 
 ### 环境常见问题

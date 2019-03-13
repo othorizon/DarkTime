@@ -79,6 +79,7 @@
   * [nginx](/nginx/nginx.md)
   * [ngix 文件浏览器 文件服务器](/nginx/nginx文件浏览器.md)
 * linux
+  * [群晖nas札记](/linux/nas.md)
   * [ftp](/linux/ftp.md)
   * [linux 运维](/linux/运维.md)
   * [常用命令](/linux/linux-regular-cmd.md)

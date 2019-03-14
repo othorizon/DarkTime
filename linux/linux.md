@@ -294,6 +294,11 @@ scp -o ProxyCommand='ssh 10.69.57.76 -W %h:%p' ./test.txt 10.111.84.141:~/
 <a href='linux-addition.md#scp远程复制' >详细说明</a>
 [scp如何跨过中转主机直接传输文件？ - 知乎](https://www.zhihu.com/question/38216180)
 
+### rsync 远程复制文件 显示文件进度
+
+`rsync -Phavz --stats -e ssh  root@114.215.191.193:/data/wwwroot/shop/upload /data/wwwroot/shop/upload/`
+各个参数的解释：[https://explainshell.com/explain?cmd=rsync+-Phavz+--stats+-e](https://explainshell.com/explain?cmd=rsync+-Phavz+--stats+-e)
+
 ----
 
 ## awk比较文件

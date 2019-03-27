@@ -335,6 +335,7 @@ speed_download | 下载速度，单位-字节每秒
 [How do I connect to a WiFi network using nmcli?](https://askubuntu.com/questions/377687/how-do-i-connect-to-a-wifi-network-using-nmcli)
 [nmcli 命令行方式连接wifi及删除连接操作](http://www.huangea.com/?p=845)
 [linux 无线网卡的连接（命令行） Part2 —— network-manager(nmcli)](https://blog.csdn.net/gw569453350game/article/details/53261772)
+[如何管理可用的无线网络优先级？ - Ubuntu问答](https://ubuntuqa.com/article/1645.html)
 
 使用network-manager 管理wifi，更为方便
 

@@ -44,6 +44,31 @@ docker load < /root/image.tar
 
 ---
 
+## docker的技巧
+
+### 用docker来做linux应用程序，docker run --rm 的应用
+
+在linux系统中可以借助docker镜像来做程序，而不需要真的去安装程序。
+
+以安装redis客户端为例
+
+```bash
+#!/bin/bash
+docker run -it --rm registry.cn-hangzhou.aliyuncs.com/boshen-ns/redis:3 redis-cli $*
+```
+
+编写一个如上的shell脚本`redis-cli`。  
+`--rm`参数类似于playground模式，让容器在停止之后自动删除，保持干净。
+`$*`的意思是接收执行shell脚本时的所有参数。
+
+然后把该脚本连接到`/usr/local/bin`目录`ln -s /home/dev/redis-cli /usr/local/bin/redis-cli`，当然也可以直接在这个目录编写该脚本也一样。
+
+授权`chmod +x /usr/local/bin/redis-cli`  
+
+这样就完成了，只要在终端输入redis-cli 就可以了
+
+---
+
 ## docker理解
 
 [(转)Docker镜像中的base镜像理解 - 笑侃码农 - 博客园](https://www.cnblogs.com/kb342/p/7649598.html)
@@ -198,6 +223,7 @@ docker-compose down -v
 [Compose 命令说明 - Docker &mdash;&mdash; 从入门到实践 - 极客学院Wiki](http://wiki.jikexueyuan.com/project/docker-technology-and-combat/commands.html)
 [Docker Compose 配置文件详解](https://www.jianshu.com/p/2217cfed29d7)
 [Docker-Compose入门 - CSDN博客](https://blog.csdn.net/chinrui/article/details/79155688)
+[docker-compose ports和expose的区别 - 歪麦博客](https://www.awaimai.com/2138.html)
 
 在一个docker-compose中的容器，会被自动放在一个网络环境里，不用再使用 --link 去连接容器了，可以直接通过容器的名称(`container_name`)或者service的名称来访问其他容器。使用`docker network ls`命令可以看到会自动创建一个桥接网络，在第一次运行compose时也可以看到提示创建了网络。
 
@@ -216,6 +242,7 @@ services:
     depends_on:
       - mongodb
     ports:
+      #ports中如果不指定映射到的端口比如只写`- 3000`则会随机映射到主机的端口
       - "3000:3000"
 ```
 

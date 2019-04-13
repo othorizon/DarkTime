@@ -1,15 +1,91 @@
 # linux
 
-[TOC]
+- [linux](#linux)
+  - [常用命令](#常用命令)
+    - [进程相关](#进程相关)
+  - [增强工具](#增强工具)
+  - [firewall port 防火墙与端口](#firewall-port-防火墙与端口)
+  - [用户管理](#用户管理)
+    - [其他设置](#其他设置)
+  - [系统相关](#系统相关)
+    - [开关机](#开关机)
+    - [系统启动](#系统启动)
+      - [图形界面](#图形界面)
+  - [杂项](#杂项)
+    - [SSH 端口转发 端口映射](#ssh-端口转发-端口映射)
+    - [创建环境变量](#创建环境变量)
+    - [零散](#零散)
+  - [字符串操作详解](#字符串操作详解)
+  - [linux磁盘操作](#linux磁盘操作)
+  - [sed](#sed)
+    - [批量替换文件内容](#批量替换文件内容)
+    - [应用](#应用)
+    - [删除字符](#删除字符)
+  - [xargs](#xargs)
+    - [复制文件到多个目录](#复制文件到多个目录)
+  - [find](#find)
+    - [批量向文件追加内容](#批量向文件追加内容)
+      - [批量文件头追加内容](#批量文件头追加内容)
+      - [批量文件末尾追加内容](#批量文件末尾追加内容)
+    - [批量修改文件名称](#批量修改文件名称)
+  - [远程复制 scp rsync](#远程复制-scp-rsync)
+    - [scp](#scp)
+    - [rsync 远程复制文件 显示文件进度](#rsync-远程复制文件-显示文件进度)
+  - [awk比较文件](#awk比较文件)
+  - [curl](#curl)
+    - [curl测试下载速度](#curl测试下载速度)
+  - [linux wifi使用手册](#linux-wifi使用手册)
+  - [linux aria2 下载](#linux-aria2-下载)
 
 ----
 
-常用
+## 常用命令
+
+[explainshell.com -shell命令解释在线工具- match command-line arguments to their help text](https://explainshell.com/)
+
+### 进程相关
 
 ```bash
 ps -efww # 加上 ww可以显示完整的cmd
 
 ```
+
+----
+
+## 增强工具
+
+- 简单的端口转发工具 https://github.com/rssnsj/portfwd  (比firewall或者iptable的规则配置更省事)
+  安装:使用make命令编译和安装 `cd src && make all && make install`
+- htop top命令的增强版
+
+----
+
+## firewall port 防火墙与端口
+
+firewall
+
+```bash
+# 列出所有
+firewall-cmd --list-all
+# --zone=public 指定zone
+firewall-cmd --zone=public --list-all
+
+#开放端口
+firewall-cmd --zone=public --add-port=9301/tcp
+## --permanent 永久，如果不加就是临时的，重启服务后就没了
+firewall-cmd --permanent --zone=public --add-port=9301/tcp
+#移除开放
+firewall-cmd --remove-port=9022/tcp
+
+#开放服务 --permanent 永久开放，不加是临时
+firewall-cmd --add-service=nfs
+firewall-cmd --add-service=nfs --permanent
+#删除服务
+firewall-cmd --remove-service=nfs
+
+```
+
+----
 
 ## 用户管理
 
@@ -93,7 +169,7 @@ init 3 关闭图形界面，init 5 打开图形界面
 
 ## 杂项
 
-### 端口转发 端口映射
+### SSH 端口转发 端口映射
 
 [SSH隧道：内网穿透实战](https://cherrot.com/tech/2017/01/08/ssh-tunneling-practice.html)
 

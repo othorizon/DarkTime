@@ -8,9 +8,9 @@
   * [spring boot 配置文件](/SpringBoot/springboot配置文件.md)
   * [spring boot 配置mybatis](/SpringBoot/springboot配置mybatis.md)
 * MacAwesome
-  * [markdown使用](/MacAwesome/markdown.md)
+  * [markdown使用](/MacAwesome/markdown.md)
   * [MAC APP Awesome](/MacAwesome/app.md)
-  * [[markdown使用](/markdown.md)](/MacAwesome/SUMMARY.md)
+  * [[markdown使用](/markdown.md)](/MacAwesome/SUMMARY.md)
   * [chrome](/MacAwesome/chrome.md)
   * [intellij idea](/MacAwesome/intellij_idea.md)
   * [MacAwesome](/MacAwesome/README.md)

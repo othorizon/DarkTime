@@ -188,7 +188,7 @@ docker volume命令是在后来的版本中引入的新功能，它除了可以�
 
 **容器之间共享数据场景**
 
-docker run命令中可以通过`--volumes-from`参数来共享其他容器或卷轴的数据
+docker run命令中可以通过`--volumes-from`参数来共享其他容器或卷轴的数据
 
 一种方式是
 `docker run --volumes-from container-id`指定一个容器可以共享该容器中创建的卷轴，这里只是共享指定容器中创建的数据卷轴而不是共享容器的数据（目标容器运行与否无关）.

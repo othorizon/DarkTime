@@ -447,14 +447,14 @@ after a '--' on the command line.
 `$ sqoop import --connect jdbc:mysql://database.example.com/employees`
 
 这个连接串会连接database.example.com服务器上的employees数据库。必须要注意如果你准备在分布式Hadoop集群使用Sqoop导入数据，你不能使用`localhost`作为Url来连接数据源，因为这个连接串会被应用于你的MapReduce集群的任务节点上。  
-指定数据库连接后，需要提供数据库访问的用户名和密码，密码有多种设定方式，显式的指定密码是不安全的
+指定数据库连接后，需要提供数据库访问的用户名和密码，密码有多种设定方式，显式的指定密码是不安全的
 
 ```bash
 $ sqoop import --connect jdbc:mysql://database.example.com/employees \
     --username venkatesh --password-file ${user.home}/.password
 ```
 
-Sqoop内置了MySql的驱动，对于其他的，需要自己安装驱动，将驱动文件放到`$SQOOP_HOME/lib`目录下，然后使用`--driver`参数指定驱动的全类名
+Sqoop内置了MySql的驱动，对于其他的，需要自己安装驱动，将驱动文件放到`$SQOOP_HOME/lib`目录下，然后使用`--driver`参数指定驱动的全类名
 
 ```bash
 $ sqoop import --driver com.microsoft.jdbc.sqlserver.SQLServerDriver \
@@ -483,7 +483,7 @@ $ sqoop import --driver com.microsoft.jdbc.sqlserver.SQLServerDriver \
 
 `--direct` 如果数据源支持，使用direct模式导入
 
-`-m,--num-mappers <n>` 指定并行导入数据的map数量(正整数)，默认为4个
+`-m,--num-mappers <n>` 指定并行导入数据的map数量(正整数)，默认为4个
 
 `-e,--query <statement>` 导入查询语句得到的数据
 

@@ -7,6 +7,7 @@ echo start deploy,dir:$dir,message:$mes
 # summary -d
 
 sh buildsummary.sh "${dir}"
+cp SUMMARY.md README.md
 git status
 git acm "$mes"
 git pull

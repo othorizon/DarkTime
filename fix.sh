@@ -1,6 +1,7 @@
 #!/bin/bash
 set -ex
 
+echo fix errorChar
 # check error
 # errorChar=`find . -name "*.md" |xargs grep  ""`
 # if [ -n "$errorChar" ]; then

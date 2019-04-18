@@ -6,6 +6,7 @@ echo start deploy,dir:$dir,message:$mes
 # summary -b -t;mv _summary.md SUMMARY.md
 # summary -d
 
+sh fix.sh
 sh buildsummary.sh "${dir}"
 cp SUMMARY.md README.md
 git status

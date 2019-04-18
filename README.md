@@ -85,6 +85,7 @@
   * [常用命令](/linux/linux-regular-cmd.md)
   * [linux](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)
+  * [简易灰度部署脚本 不使用jenkins的纯shell方式](/linux/project_deploy_sh.md)
   * [shell脚本](/linux/shell.md)
   * [附加文档](/linux/linux-addition.md)
 * mysql

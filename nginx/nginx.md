@@ -45,7 +45,9 @@ return 301 https://$host$request_uri;
 
 ## nginx 反向代理
 
-[nginx配置url重定向-反向代理-大風-51CTO博客](http://blog.51cto.com/lansgg/1575274)
+[nginx配置url重定向-反向代理-大風-51CTO博客](http://blog.51cto.com/lansgg/1575274)  
+
+/etc/nginx/nginx.conf
 
 ```conf /etc/nginx/nginx.conf
 server {
@@ -62,6 +64,48 @@ proxy_pass          http://192.168.10.129/other;
 proxy_set_header    X-Real-IP $remote_addr;
     }
 }
+```
+
+## 使用nginx stream
+
+tag 代理mysql stream代理ssh tcp反向代理 nginx代理ssh  
+
+[Module ngx_stream_core_module](http://nginx.org/en/docs/stream/ngx_stream_core_module.html)  
+[caojx-git/learn nginx使用stream模块做ssh转发](https://github.com/caojx-git/learn/blob/master/notes/nginx/nginx%E4%BD%BF%E7%94%A8stream%E6%A8%A1%E5%9D%97%E5%81%9Assh%E8%BD%AC%E5%8F%91.md)  
+
+/etc/nginx/nginx.conf
+
+```conf /etc/nginx/nginx.conf
+# 要注意不要放到http块中，因为这个不是http转发而是tcp层的转发
+# stream模块使用yum安装的高版本nginx是有的，编译安装的默认可能没有
+
+stream {
+    #配置upstream是用与负载均衡的，可以不这样配置
+    upstream cloudsocket {
+       hash $remote_addr consistent;
+      # $binary_remote_addr;
+       server 192.168.182.155:3306 weight=5 max_fails=3 fail_timeout=30s;
+    }
+    #代理mysql
+    server {
+       listen 3306;#数据库服务器监听端口
+       proxy_connect_timeout 10s;
+       proxy_timeout 3s;
+       #负载均衡配置方法
+       #proxy_pass cloudsocket;
+       # 简单配置方法
+       proxy_pass 10.69.65.96:3306;
+    }
+
+    #代理ssh
+    server {
+            listen 80;
+            proxy_pass ssh;
+            proxy_connect_timeout 1h;
+            proxy_timeout 1h;
+    }
+}
+
 ```
 
 ## nginx 重定向 rewrite

@@ -21,6 +21,7 @@
 * 框架
   * [各种框架和工具](/框架/框架.md)
 * docker
+  * [kubernetes](/docker/kubernetes.md)
   * [docker](/docker/docker.md)
   * [docker 常用镜像](/docker/docker-images.md)
 * 效率工具
@@ -35,7 +36,7 @@
   * [npm](/效率工具/npm.md)
   * [Visual Studio Code 的使用](/效率工具/VSCode.md)
   * [homebrew的使用](/效率工具/homebrew.md)
-  * [生产力工具](/效率工具/tools.md)
+  * [汇总](/效率工具/tools.md)
 * tomcat
   * [tomcat目录规范](/tomcat/tomcat规范.md)
 * code_snippets

@@ -11,14 +11,21 @@
 [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#optional-kubectl-configurations)  
 [kubernetes-sigs/kind](https://github.com/kubernetes-sigs/kind)  
 [bsycorp/kind](https://github.com/bsycorp/kind)  
+[Kubernetes（k8s）中文文档 目录_Kubernetes中文社区](https://www.kubernetes.org.cn/docs)  
+
+[Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超)](https://jimmysong.io/kubernetes-handbook/)  
 
 ### 笔记
 
->在Pod中的任何容器都共享了容器命名空间以及本地网络。因此在Pod的容器直接可以非常方便的进行通讯，就好像它们是运行在同一个机器上一样，同时彼此之间又保持隔离。 http://dockone.io/article/3050
+[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)  
 
->Pod中可以包含多个容器，但是你还是应该尽可能的限制一下。因为Pod是作为一个最小单元，整体进行伸缩。这可能导致资源的浪费以及更多的费用开销。为了避免这种问题。Pod应该尽可能的保持“小”，通常指应该包含一个主进程，以及与其紧密合作的辅助容器（这些辅助容器通常被称为Sidecar）。 http://dockone.io/article/3050  
+**pod**
+在Pod中的任何容器都共享了容器命名空间以及本地网络。因此在Pod的容器直接可以非常方便的进行通讯，就好像它们是运行在同一个机器上一样，同时彼此之间又保持隔离。  
+Pod中可以包含多个容器，但是你还是应该尽可能的限制一下。因为Pod是作为一个最小单元，整体进行伸缩。这可能导致资源的浪费以及更多的费用开销。为了避免这种问题。Pod应该尽可能的保持"小"，通常指应该包含一个主进程，以及与其紧密合作的辅助容器（这些辅助容器通常被称为Sidecar）。 http://dockone.io/article/3050  
 
-[Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)
+**services**
+如果Pods是短暂的，那么重启时IP地址可能会改变，怎么才能从前端容器正确可靠地指向后台容器呢？  
+Service是定义一系列Pod以及访问这些Pod的策略的一层抽象。Service通过Label找到Pod组。因为Service是抽象的，所以在图表里通常看不到它们的存在，这也就让这一概念更难以理解。
 
 ### 学习
 
@@ -40,4 +47,41 @@ apk add bash-completion
 echo 'source /etc/profile.d/bash_completion.sh' >> ~/.bashrc
 #安装提示 https://kubernetes.io/docs/tasks/tools/install-kubectl/#optional-kubectl-configurations
 echo 'source <(kubectl completion bash)' >> ~/.bashrc
+```
+
+pod 的yml配置
+
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gitea-pod
+spec:
+  containers:
+  - name: gitea-container
+    image: gitea/gitea:1.4
+```
+
+service 的json
+
+```json
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "name": "my-service"
+    },
+    "spec": {
+        "selector": {
+            "app": "MyApp"
+        },
+        "ports": [
+            {
+                "protocol": "TCP",
+                "port": 80,
+                "targetPort": 9376
+            }
+        ]
+    }
+}
 ```

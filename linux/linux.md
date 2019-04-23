@@ -14,6 +14,7 @@
   - [杂项](#杂项)
     - [SSH 端口转发 端口映射](#ssh-端口转发-端口映射)
     - [创建环境变量](#创建环境变量)
+    - [linux多行文本输入](#linux多行文本输入)
     - [零散](#零散)
   - [字符串操作详解](#字符串操作详解)
   - [linux磁盘操作](#linux磁盘操作)
@@ -191,6 +192,25 @@ $ cat /etc/profile.d/path.sh
 # mvn
 export M2_HOME=/usr/local/apps/apache-maven-3.5.4
 export PATH=$PATH:$JAVA_HOME/bin:$M2_HOME/bin
+```
+
+### linux多行文本输入
+
+<<EOF 表示以EOF作为输入结束符号，因此使用任意字符都可以  
+[cat <<EOF与cat <<-EOF的区别](https://blog.csdn.net/relijin/article/details/68924800)  
+[Linux CAT与ECHO命令详解  &lt;&lt;EOF  EOF](https://www.cnblogs.com/archoncap/p/6080088.html)  
+
+```bash
+$ cat <<EOF |cat -
+line1
+line2
+EOF
+
+# 多行写到文件
+$ cat <<EOF >>output
+line1
+line2
+EOF
 ```
 
 ### 零散

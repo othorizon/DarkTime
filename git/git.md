@@ -153,6 +153,13 @@ git submodule foreach git pull #遍历进入每一个子模块，执行 git pull
 
 ## 使用技巧
 
+### 使用BFG删除敏感信息  删除文件的所有历史记录
+
+bfg比‘git filter-branch’速度更快更好用。（BFG 是git filter-branch 首字母的逆转）  
+[技术|你的 Github 仓库被 DMCA Takedown 后怎么办？](https://linux.cn/article-9374-1.html?pr)  
+[Removing sensitive data from a repository - GitHub Help](https://help.github.com/en/articles/removing-sensitive-data-from-a-repository)  
+[BFG Repo-Cleaner by rtyley](https://rtyley.github.io/bfg-repo-cleaner/)  
+
 ### 删除某个文件的所有历史
 
 不小心提交了敏感信息，并且已经push了很多个版本，可以用这种方式删除该文件/文件夹的所有历史记录。  

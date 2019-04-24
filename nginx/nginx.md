@@ -90,7 +90,7 @@ stream {
     server {
        listen 3306;#数据库服务器监听端口
        proxy_connect_timeout 10s;
-       proxy_timeout 3s;
+       proxy_timeout 5m; #这个属性的含义不太清楚，和mysql的连接时间应该似乎有关系，时间太短似乎会导致mysql的连接被中断
        #负载均衡配置方法
        #proxy_pass cloudsocket;
        # 简单配置方法

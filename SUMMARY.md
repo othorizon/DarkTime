@@ -56,6 +56,7 @@
   * [aliyun 主机的种种](/云主机/aliyun.md)
 * maven
   * [maven使用](/maven/maven使用.md)
+  * [maven项目增加编译版本号 buildnumber-maven-plugin](/maven/buildnumber-maven-plugin.md)
   * [仓库](/maven/maven仓库.md)
 * java
   * [java 开发常用工具类](/java/utils.md)

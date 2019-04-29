@@ -218,6 +218,8 @@ EOF
 [Why is scp so slow and how to make it faster?](https://unix.stackexchange.com/questions/238152/why-is-scp-so-slow-and-how-to-make-it-faster)
 在大文件慢网速的情况下，尽量使用`rsync`代替`scp`，rsync支持断点续传。
 
+[【技术分享】linux各种一句话反弹shell总结 - 安全客，安全资讯平台](https://www.anquanke.com/post/id/87017)
+
 ----
 
 ## 字符串操作详解

@@ -51,6 +51,11 @@
     丰富的语法支持和功能支持，提供API
   - [notes.cat](https://notes.cat/) [upstairs.cc](https://upstairs.cc)
     简易的在线记事本
+  - 在线markdown记事本
+    - [mak.ink](https://mak.ink/)  
+      https://inns.studio/mak  https://github.com/inns/mak 可以同步到gist的风格很简单舒服的在线markdown
+    - [StackEdit](https://stackedit.io/)  较重的在线markdown，支持同步到github、google drive 等。功能较丰富
+
 - [myjson](http://myjson.com/)  A simple JSON store for your web or mobile app
 - 在线文件共享与传输
   - [sharedrop](https://www.sharedrop.io/)  

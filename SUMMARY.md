@@ -45,6 +45,7 @@
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
   * notelive
     * [文章框架](/专题/notelive/notelive框架.md)
+    * [notelive vue版本开发](/专题/notelive/notelive-vue.md)
     * [notelive 开发 札记](/专题/notelive/notelive开发.md)
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
@@ -61,6 +62,7 @@
 * java
   * [java 开发常用工具类](/java/utils.md)
   * [java](/java/java.md)
+  * [apache commons pool 对象连接池](/java/apache-common-pool.md)
 * 大数据
   * [kafka](/大数据/kafka.md)
   * [gobblin](/大数据/gobblin.md)
@@ -103,8 +105,12 @@
     * [在本地部署Parse Server](/学习笔记/baas/parse-server.md)
   * [java code snippets](/学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](/学习笔记/spring-cloud-not-boot.md)
+  * kotlin
+    * [Kotlin 学习札记](/学习笔记/kotlin/kotlin.md)
   * [spring cloud](/学习笔记/spring-cloud.md)
   * [vim配置](/学习笔记/vim配置.md)
+  * 前端
+    * [开发PWA应用](/学习笔记/前端/pwa.md)
 * jenkins
   * [jenkins配置备份](/jenkins/jenkins配置.md)
   * [gitlab触发Jenkins 自动构建](/jenkins/gitlab触发jenkins自动构建.md)

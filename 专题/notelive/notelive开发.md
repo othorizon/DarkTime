@@ -1,14 +1,15 @@
 # notelive 开发 札记
 
 - [notelive 开发 札记](#notelive-开发-札记)
-    - [背景](#背景)
-    - [技术栈](#技术栈)
-    - [部署方案](#部署方案)
-        - [前端部署](#前端部署)
-        - [后端部署](#后端部署)
-            - [pm2管理项目](#pm2管理项目)
-    - [参考资料](#参考资料)
-    - [一些零碎的知识点](#一些零碎的知识点)
+  - [背景](#背景)
+  - [技术栈](#技术栈)
+  - [部署方案](#部署方案)
+    - [前端部署](#前端部署)
+    - [后端部署](#后端部署)
+      - [pm2管理项目](#pm2管理项目)
+  - [开发PWA应用](#开发pwa应用)
+  - [参考资料](#参考资料)
+  - [一些零碎的知识点](#一些零碎的知识点)
 
 ## 背景
 
@@ -100,6 +101,15 @@ push前端代码到github之后，打开repository->settings，往下翻找到Gi
 ```
 
 `env`为默认的环境配置（生产环境），`env_dev`、`env_test`来指定不同环境的环境变量配置，通过参数`--env`指定环境：`pm2 start app.js --env dev`
+
+## 开发PWA应用
+
+参考：
+
+[PWA介绍及快速上手搭建一个PWA应用 - 游魂的技术日志 - SegmentFault 思否](https://segmentfault.com/a/1190000014639473)  
+[使用offline-plugin搭配webpack轻松实现PWA - Jrain-前端玩具盆 - SegmentFault 思否](https://segmentfault.com/a/1190000010669126)  
+
+使用localStorage存储当前工作内容，localStorage比cookie更适合存储当前会话的数据。
 
 ## 参考资料
 

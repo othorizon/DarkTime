@@ -1,5 +1,9 @@
 # shell脚本
 
+- [shell脚本](#shell脚本)
+  - [一些特性](#一些特性)
+  - [防止脚本同时运行多个 防止脚本多开](#防止脚本同时运行多个-防止脚本多开)
+
 编写shell脚本的参考例子：[ClassicOldSong/shadow](https://github.com/ClassicOldSong/shadow)
 
 ## 一些特性

@@ -4,6 +4,12 @@
 
 ## 常用命令
 
+### 修改session name
+
+创建session 时，使用参数指定名字： `screen -S my_screen_name`
+
+修改已有session name：`ctrl+a :sessionname my_screen_name`
+
 ## FAQ
 
 ### screen中出现命令无法使用问题 环境变量缺失文图

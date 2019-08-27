@@ -2,6 +2,7 @@
 
 - [shell脚本](#shell脚本)
   - [一些特性](#一些特性)
+  - [shell中对参数的处理](#shell中对参数的处理)
   - [防止脚本同时运行多个 防止脚本多开](#防止脚本同时运行多个-防止脚本多开)
 
 编写shell脚本的参考例子：[ClassicOldSong/shadow](https://github.com/ClassicOldSong/shadow)
@@ -36,6 +37,20 @@ echo $ENV2
 $ ENV1=a ENV2=b sh demo.sh
 a
 b
+```
+
+## shell中对参数的处理
+
+```bash
+#echo -n "$1"|md5sum|awk '{print $1}'|xargs -I{} kubectl -n {} $2 $3 $4 $5 $6 $7
+id=`echo -n "$1"|md5sum|awk '{print $1}'`
+if [ -z $2 ];then
+echo $id
+exit 0
+fi
+kubectl -n $id ${@:2}
+# ${@:2} 会返回第二个开始的所有参数，参考： https://www.jianshu.com/p/eaa3406b7cff
+# 示例： ${@:1:$#-1} : 其中$@是列表形式列出所有的传入参数，然后:1是从第一个参数开始，后面不加任何东西的话是一直到结尾，而加:$#-1是$#是参数总个数-1，即显示除去最后一个参数外的所有参数。
 ```
 
 ## 防止脚本同时运行多个 防止脚本多开

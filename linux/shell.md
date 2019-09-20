@@ -53,6 +53,33 @@ kubectl -n $id ${@:2}
 # 示例： ${@:1:$#-1} : 其中$@是列表形式列出所有的传入参数，然后:1是从第一个参数开始，后面不加任何东西的话是一直到结尾，而加:$#-1是$#是参数总个数-1，即显示除去最后一个参数外的所有参数。
 ```
 
+```bash
+
+while getopts a:n:f:h FLAG; do
+  case $FLAG in
+    a)  #set option "a"
+      action="$OPTARG"
+      echo "$action start!"
+      ;;
+    n)  #set option "n"
+      namespace="$OPTARG"
+      echo "namespace = $namespace"
+      ;;
+    f)  #set option "f"
+      valuesOption="$OPTARG"
+      echo "valuesOption = $valuesOption"
+      ;;
+    h)  #show help
+      HELP
+      ;;
+    \?) #unrecognized option - show help
+      echo -e \\n"Option -${BOLD}$OPTARG${NORM} not allowed."
+      HELP
+      ;;
+  esac
+done
+```
+
 ## 防止脚本同时运行多个 防止脚本多开
 
 如何避免shell脚本被同时运行多次

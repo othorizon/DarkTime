@@ -14,6 +14,8 @@
 - RestTempalte的优雅使用：工具类的封装、header的注入
 - 借助Mybatis-Plus实现零SQL开发
 - 借助MapStruct实现po、bo、vo等对象之间的转换
+- 健康接口，版本检查： buildnumber-maven-plugin
+- Jenkins的常用配置方式
 
 ### 在项目中的实践
 

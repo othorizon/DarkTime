@@ -1,5 +1,48 @@
 # jenkins配置备份
 
+## jenkins 标准配置
+
+```bash
+APP_NAME=$module-1.0-SNAPSHOT.jar
+
+TARGET=/root/datamap/apps/$module/$APP_NAME
+
+JVM_OPTS=" -Duser.timezone=GMT+08 -server -Xms4G -Xmx4G -XX:MaxMetaspaceSize=256M -XX:MetaspaceSize=256M -Xloggc:${logs}/gc.log -XX:-PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime -XX:+UseConcMa
+rkSweepGC -XX:CMSInitiatingOccupancyFraction=70  -XX:+UseCMSCompactAtFullCollection -XX:+CMSParallelRemarkEnabled -XX:+HeapDumpOnOutOfMemoryError"
+
+#=======
+
+mvn clean package -Dmaven.test.skip=true
+
+cp $module/target/$APP_NAME $TARGET
+
+
+pid=`ps -ef | grep -v grep | grep "$TARGET" |  awk '{print $2}'`
+
+if [ -n "$pid" ]
+then
+
+echo kill pid:$pid
+
+kill -9 $pid
+fi
+
+#=======
+
+cd /root/datamap/apps/$module
+MOCKTIME_ARG=""
+
+if [ -n "$MOCK_CUR_TIME" ]
+then
+
+echo MOCK_CUR_TIME:$MOCK_CUR_TIME
+MOCKTIME_ARG="-DMOCK_CUR_TIME=$MOCK_CUR_TIME"
+
+fi
+# BUILD_ID 用来防止线程退出
+BUILD_ID=$APP_NAME nohup java $MOCKTIME_ARG -jar $TARGET --spring.profiles.active=dev >/root/apps/$module/console.log 2>&1 &
+```
+
 ## spring cloud的集群配置
 
 预览图

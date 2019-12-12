@@ -5,7 +5,7 @@
 - 如何配置拦截器：interceptor、filter、@RestControllerAdvice
 - bean的初始化： InitializingBean接口、@conditionXXX 注解
 - 如何获取applicationContext上下文： ApplicationContextAware
-- 枚举的优雅使用： 1、如何把枚举作为接口的交互参数：@JsonCreator、@JsonValue 2、valueOfByXX
+- 枚举的优雅使用： 1、如何把枚举作为接口的交互参数：@JsonCreator、@JsonValue ,要注意fastjson和spring采用的jackson 对注解的支持 2、valueOfByXX
 - 缓存的优雅使用： @cacheable 、CaffeineCacheManager
 - 配置文件配置时间属性：java.time.Duration
 

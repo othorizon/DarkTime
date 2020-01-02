@@ -43,10 +43,12 @@
 * 专题
   * [RESTful API](/专题/restfulapi.md)
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
+  * [spring 最佳实践](/专题/spring-best-practice.md)
   * notelive
     * [文章框架](/专题/notelive/notelive框架.md)
     * [notelive vue版本开发](/专题/notelive/notelive-vue.md)
     * [notelive 开发 札记](/专题/notelive/notelive开发.md)
+  * [webrtc技术分析](/专题/webrtc.md)
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
@@ -103,6 +105,7 @@
   * [如何解决百度爬虫无法爬取搭建在Github上的个人博客的问题？ - 知乎](https://www.zhihu.com/question/30898326)](/学习笔记/待整理.md)
   * baas
     * [在本地部署Parse Server](/学习笔记/baas/parse-server.md)
+  * [mysql学习标记](/学习笔记/mysql.md)
   * [java code snippets](/学习笔记/java_code_snippets.md)
   * [非Spring Boot Web项目 注册节点到Eureka Server并提供服务](/学习笔记/spring-cloud-not-boot.md)
   * kotlin

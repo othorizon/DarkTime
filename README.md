@@ -1,4 +1,5 @@
 * SpringBoot
+  * [spring boot 运维](/SpringBoot/springboot运维.md)
   * [Spring Boot 部署war包](/SpringBoot/springboot部署war包.md)
   * [springboot搭建](/SpringBoot/springboot搭建.md)
   * [spring boot 读取配置文件](/SpringBoot/springboot读取配置文件.md)
@@ -43,6 +44,7 @@
 * 专题
   * [RESTful API](/专题/restfulapi.md)
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
+  * [开发中的各种疑难杂症问题](/专题/疑难杂症.md)
   * [spring 最佳实践](/专题/spring-best-practice.md)
   * notelive
     * [文章框架](/专题/notelive/notelive框架.md)

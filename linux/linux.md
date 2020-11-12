@@ -1,6 +1,8 @@
 # linux
 
 - [linux](#linux)
+  - [线上问题排查常用](#线上问题排查常用)
+    - [tcpdump 监控网络请求](#tcpdump-监控网络请求)
   - [常用命令](#常用命令)
     - [进程相关](#进程相关)
   - [增强工具](#增强工具)
@@ -40,6 +42,50 @@
   - [linux aria2 下载](#linux-aria2-下载)
 
 ----
+
+## 线上问题排查常用
+
+### tcpdump 监控网络请求
+
+```bash
+tcpdump -X -v -nnn host 10.4.1.10
+
+//按端口
+tcpdump -A -s 0 -nn 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+//按host
+tcpdump -A -s 0 -nn 'host 127.0.0.1 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+
+
+tcpdump -A -s 0
+//增加展示ip出入
+tcpdump -A -s 0 -nn
+tcpdump -A -s 0 -V -nnn
+```
+
+-n　指定将每个监听到数据包中的域名转换成IP地址后显示，不把网络地址转换成名字；
+-nn： 指定将每个监听到的数据包中的域名转换成IP、端口从应用名称转换成端口号后显示
+
+参考：
+
+Here’s a tcpdump filter for HTTP GET:
+
+```
+tcpdump -s 0 -A 'tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x47455420'
+tcpdump -s 0 -A 'tcp dst port 80 and tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x47455420'
+```
+
+Here’s a tcpdump filter for HTTP POST:
+
+```
+tcpdump -s 0 -A 'tcp dst port 80 and (tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x504f5354)'
+```
+
+Monitor HTTP traffic including request and response headers and message body ([source](https://sites.google.com/site/jimmyxu101/testing/use-tcpdump-to-monitor-http-traffic)):
+
+```
+tcpdump -A -s 0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+//tcpdump -X -s 0 'tcp port 80 and (((ip[2:2] - ((ip[0]&0xf)<<2)) - ((tcp[12]&0xf0)>>2)) != 0)'
+```
 
 ## 常用命令
 

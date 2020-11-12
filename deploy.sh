@@ -10,7 +10,8 @@ sh fix.sh
 sh buildsummary.sh "${dir}"
 cp SUMMARY.md README.md
 git status
-git acm "$mes"
+git add .
+git commit -m "$mes"
 git pull
 git push
 git status

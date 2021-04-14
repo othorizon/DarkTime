@@ -16,6 +16,13 @@
 
 [Kubernetes Handbook - Kubernetes中文指南/云原生应用架构实践手册 by Jimmy Song(宋净超)](https://jimmysong.io/kubernetes-handbook/)  
 
+### 部署kubernetes
+
+MAC 上启用k8s
+[docker desktop上启用kubernetes](https://blog.csdn.net/chinaloong1949/article/details/103440150)
+
+> docker 启用k8s 国内网路问题解决：https://github.com/AliyunContainerService/k8s-for-docker-desktop
+
 ### 笔记
 
 [Overview of kubectl](https://kubernetes.io/docs/reference/kubectl/overview/)  

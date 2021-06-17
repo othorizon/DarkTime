@@ -19,6 +19,13 @@ maven的多模块，由于项目比较大，每次修改后构建整个工程耗
 单独构建模块 pingjuan-common，同时构建依赖模块 pingjuan-common 的其他模块
 `$ mvn install -pl pingjuan-common -am -amd`
 
+### 指定构建子模块
+
+如果想要构建的模块是一个子模块，则需要通过path路径的方式来指定子模块  
+示例中 moduleA_1是moduleA的子模块  
+
+`mvn clean package -pl moduleA/moduleA_1 -am`
+
 ## maven版本管理
 
 参考：

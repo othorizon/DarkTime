@@ -2,7 +2,7 @@
 
 ## 在线学习环境
 
-[Kubernetes主页 狐狸教程](https://www.freeaihub.com/kubernetes/)
+[Kubernetes主页 狐狸教程](https://www.freeaihub.com/kubernetes/)  支持在线容器环境实际测试
 
 ## 学习札记
 

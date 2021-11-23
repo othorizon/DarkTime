@@ -1,8 +1,25 @@
 # kubernetes
 
-## 在线学习环境
+## 在线学习环境 交互式学习环境
 
-[Kubernetes主页 狐狸教程](https://www.freeaihub.com/kubernetes/)  支持在线容器环境实际测试
+[Kubernetes狐狸教程](https://www.freeaihub.com/kubernetes/)
+[kubernetes官方教程](https://kubernetes.io/zh/docs/home/)
+[Katacoda - Interactive Learning Platform for Software Engineers](https://www.katacoda.com/)
+[精选项目课程_IT热门课程_蓝桥云课课程 - 蓝桥云课](https://www.lanqiao.cn/courses/)
+[腾讯云实验平台](https://cloud.tencent.com/labs)
+[阿里云全球培训中心](https://edu.aliyun.com/)
+[Educative: Interactive Courses for Software Developers](https://www.educative.io/)
+
+**Kubernetes狐狸教程 vnc 浏览器打开失败解决方法**
+安装其他Debian浏览器
+
+```sh
+apt-get update
+# 火狐浏览器
+apt-get install iceweasel
+# goole浏览器
+apt-get install google-chrome-stable
+```
 
 ## 学习札记
 

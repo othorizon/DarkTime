@@ -1,5 +1,9 @@
 # kubernetes
 
+## 在线学习环境
+
+[Kubernetes主页 狐狸教程](https://www.freeaihub.com/kubernetes/)
+
 ## 学习札记
 
 ### 参考资料

@@ -19,6 +19,10 @@
             border-collapse: collapse;
         }
 
+        label {
+            padding-left: 20px;
+        }
+
         th,
         td {
             border: solid 1px #6D6D6D;
@@ -55,9 +59,11 @@
             <div id="filePath"></div>
         </div>
 
-        <h1>步骤二：选择套餐</h1>
+        <h1>步骤二：选择套餐和项目</h1>
         <p>套餐</p>
         <div id="taocan"></div>
+        <p>项目</p>
+        <div id="project"></div>
 
         <h1>步骤三：导出权限点制品</h1>
         <div class="mt-sm" style="padding-bottom:40px;">
@@ -97,7 +103,9 @@
         }
         let _worksheets;
         let taocan = [];
+        let projects = [];
         let selectedTaocan = null;
+        let selectedProject = null;
         function readWorkbook(workbook) {
 
             // var sheetNames = workbook.SheetNames; // 工作表名称集合
@@ -109,6 +117,9 @@
             //获取套餐
             readTaocan(worksheet);
             renderTaocan();
+            //获取项目
+            readProjects(worksheet);
+            renderProjects();
             //清理公式
             formual2txt(worksheet);
 
@@ -117,6 +128,7 @@
             // document.getElementById('result').innerHTML = csv2table(csv);
         }
         function renderTaocan() {
+            selectedTaocan = null;
             let content = "";
             for (let t in taocan) {
                 content += '<label>' + taocan[t] + '</label><input name="taocanRadio" type="radio" id="' + taocan[t] + '">'
@@ -126,6 +138,20 @@
                 console.log(e.target.id);
                 selectedTaocan = e.target.id;
             })
+        }
+        function renderProjects() {
+            selectedProject = null;
+            let content = "";
+            for (let t in projects) {
+                content += '<label>' + projects[t] + '</label><input name="projectRadio" type="radio" id="' + projects[t] + '">'
+            }
+            $('#project').html(content);
+            $('input:radio[name="projectRadio"]').change(function (e) {
+                console.log(e.target.id);
+                selectedProject = e.target.id;
+            })
+            $('input:radio[id="标品"]').attr("checked", true);
+            selectedProject = "标品";
         }
         function readTaocan(ws) {
             taocan = [];
@@ -138,6 +164,20 @@
                 }
             }
         }
+        function readProjects(ws) {
+            projects = [];
+            const range = XLSX.utils.decode_range(ws['!ref']);
+            for (let i = 3; i <= range.e.r + 1; i++) {//第三行开始
+                if (ws["G" + i] && ws["G" + i]["w"]) {
+                    ws["G" + i]["w"].split(";").forEach(e => {
+                        if (projects.indexOf(e) < 0) {
+                            projects.push(e);
+                        }
+                    });
+                }
+            }
+        }
+
         function formual2txt(ws) {
             const range = XLSX.utils.decode_range(ws['!ref']);
             for (let col = range.s.c; col <= range.e.c; col++) {
@@ -152,8 +192,8 @@
         }
         function delCols() {
             var worksheet = _worksheets["平台权限"];
-            //删除0-6列
-            for (i = 0; i < 6; i++) {
+            //删除0-7列
+            for (i = 0; i < 7; i++) {
                 deleteCol(worksheet, 0);
             }
             //迭代-环境 6个
@@ -298,9 +338,9 @@
             if (!selectedTaocan && !confirm("没有选择套餐，将会导出所有权限点，是否继续？")) {
                 return "cancel";
             }
-            //第二行开始
+            //第三行开始
             for (; ;) {
-                let r = delRowNext(ws, 2);
+                let r = delRowNext(ws, 3);
                 if (r > 0) {
                     delRowNext(ws, r);
                 } else {
@@ -311,8 +351,8 @@
         function delRowNext(ws, startRow) {
             const range = XLSX.utils.decode_range(ws['!ref']);
             for (let i = startRow; i <= range.e.r + 1; i++) {//第二行开始
+                //套餐清理
                 let address = "F" + i;
-                //判断是否删除
                 if (selectedTaocan === "低") {
                     if (ws[address] && (ws[address]["w"] === "中" || ws[address]["w"] === "高")) {
                         deleteRow(ws, i - 1);
@@ -324,24 +364,37 @@
                         return i;
                     }
                 }
+
+                //项目清理
+                address = "G" + i;
+                if (ws[address] && ws[address]["w"]) {
+                    let val = ws[address]["w"];
+                    if (val.indexOf("标品") < 0 && val.indexOf(selectedProject) < 0) {
+                        console.log("del", val, i - 1);
+                        deleteRow(ws, i - 1);
+                        return i;
+                    }
+                }
             }
             return -1;
         }
 
         let _file;
         $(function () {
+            document.getElementById("exportFile").disabled = true;
             document.getElementById('file').addEventListener('change', function (e) {
                 var files = e.target.files;
                 if (files.length == 0) return;
                 var f = files[0];
                 if (!/\.xlsx$/g.test(f.name)) {
-                    alert('仅支持读取xlsx格式！');
+                    alert('仅支持读取xlsx格式!');
                     return;
                 }
                 _file = f;
                 $('#filePath').html(_file.name);
                 readWorkbookFromLocalFile(f, function (workbook) {
                     readWorkbook(workbook);
+                    document.getElementById("exportFile").disabled = false;
                 });
             });
         });
@@ -351,14 +404,18 @@
             document.getElementById("exportFile").disabled = true;
             document.getElementById("exportFile").value = "导出中...";
             // $('#exportFile').val("导出中...");
-            //清理非套餐数据
+            //清理非套餐和项目数据
             let result = delNotIncludeRows();
-            if (result === "cancel") return;
+            if (result === "cancel") {
+                document.getElementById("exportFile").value = "导出权限点制品";
+                document.getElementById("exportFile").disabled = false;
+                return;
+            }
 
             //删除无用的列
             delCols();
             var blob = sheet2blob();
-            openDownloadDialog(blob, '套餐' + selectedTaocan + '-权限点导入文件.xlsx');
+            openDownloadDialog(blob, '企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
 
             //初始化
             readWorkbookFromLocalFile(_file, function (workbook) {
@@ -370,5 +427,6 @@
 
     </script>
 </body>
+
 </html>
 ```

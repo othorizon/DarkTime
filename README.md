@@ -79,6 +79,8 @@
 * 脚本
   * python
     * [批量请求url 解析json数据](/脚本/python/批量请求url.md)
+  * js
+    * [sheetjs-js读取excel](/脚本/js/js读取excel.md)
   * shell
     * [自动生成bitbook的summary文件](/脚本/shell/生成gitbookSummary.md)
     * [linux/mac 实用脚本](/脚本/shell/实用脚本.md)

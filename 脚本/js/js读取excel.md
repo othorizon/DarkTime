@@ -1,9 +1,12 @@
 # sheetjs-js读取excel
 
 参考文档：
+
+先看这个：[如何使用JavaScript实现纯前端读取和导出excel文件-好记的博客](http://blog.haoji.me/js-excel.html)
 [GitHub - rockboom/SheetJS-docs-zh-CN: SheetJS中文文档，版本v0.14.0，持续更新中](https://github.com/rockboom/SheetJS-docs-zh-CN)
 [GitHub - SheetJS/sheetjs: SheetJS Community Edition -- Spreadsheet Data Toolkit](https://github.com/SheetJS/sheetjs)
 [使用 js-xlsx 处理 Excel 文件 - 星陨的菲 - 博客园](https://www.cnblogs.com/unreal-feather/p/12794129.html?ivk_sa=1024320u)
+文件拖拽参考：[JS实现的文件拖拽上传功能示例_javascript技巧_脚本之家](https://www.jb51.net/article/140484.htm)
 
 示例代码
 
@@ -15,6 +18,20 @@
     <meta charset="UTF-8">
     <title>权限点文件生成</title>
     <style type="text/css">
+        #box {
+            width: 50%;
+            height: 50%;
+            border: 1px dashed #000;
+            position: fixed;
+            top: 25%;
+            left: 25%;
+            text-align: center;
+            font: 20px/300px '微软雅黑';
+            display: none;
+            z-index: 999;
+            background-color: rgb(128 128 128 / 50%);
+        }
+
         table {
             border-collapse: collapse;
         }
@@ -50,28 +67,32 @@
 </head>
 
 <body>
+    <div id="box">请将文件拖拽到此区域</div>
     <div class="container">
-        <h1>步骤一：读取excel</h1>
+        <h1>步骤一：下载权限点原始文件</h1>
+        <a href="https://kdocs.cn/fl/siUVrI5eP" target="_blank">权限点文档下载</a>
+        <h1>步骤二：加载权限点Excel</h1>
         <div class="mt-sm">
             <input type="file" id="file" style="display:none;"
                 accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
-            <a href="javascript:selectFile()">加载本地excel文件</a>
+            <a href="javascript:selectFile()">加载本地excel文件</a> 或 <span style="color:red"><b>拖拽文件至该窗口</b></span>
             <div id="filePath"></div>
         </div>
 
-        <h1>步骤二：选择套餐和项目</h1>
+        <h1>步骤三：选择套餐和项目</h1>
         <p>套餐</p>
         <div id="taocan"></div>
         <p>项目</p>
         <div id="project"></div>
 
-        <h1>步骤三：导出权限点制品</h1>
+        <h1>步骤四：导出权限点制品</h1>
         <div class="mt-sm" style="padding-bottom:40px;">
             <input id="exportFile" type="button" onclick="exportExcel()" value="导出权限点制品" />
         </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/xlsx/0.18.4/xlsx.core.min.js"></script>
+
     <script type="text/javascript">
 
         function selectFile() {
@@ -378,6 +399,14 @@
             }
             return -1;
         }
+        function readFile(file) {
+            $('#filePath').html(file.name);
+            readWorkbookFromLocalFile(file, function (workbook) {
+                readWorkbook(workbook);
+                document.getElementById("exportFile").value = "导出权限点制品";
+                document.getElementById("exportFile").disabled = false;
+            });
+        }
 
         let _file;
         $(function () {
@@ -391,13 +420,10 @@
                     return;
                 }
                 _file = f;
-                $('#filePath').html(_file.name);
-                readWorkbookFromLocalFile(f, function (workbook) {
-                    readWorkbook(workbook);
-                    document.getElementById("exportFile").disabled = false;
-                });
+                readFile(f);
             });
         });
+
 
 
         function exportExcel() {
@@ -418,12 +444,40 @@
             openDownloadDialog(blob, '企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
 
             //初始化
-            readWorkbookFromLocalFile(_file, function (workbook) {
-                readWorkbook(workbook);
-                document.getElementById("exportFile").value = "导出权限点制品";
-                document.getElementById("exportFile").disabled = false;
-            });
+            readFile(_file);
+
         }
+
+
+        //拖拽文件
+        window.onload = function () {
+            var oBox = document.getElementById('box');
+            var timer = null;
+            document.ondragover = function () {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    oBox.innerHTML = '请将文件拖拽到此区域';
+                    oBox.style.display = 'none';
+                }, 200);
+                oBox.style.display = 'block';
+            };
+            //进入子集的时候 会触发ondragover 频繁触发 不给ondrop机会
+            oBox.ondragenter = function () {
+                oBox.innerHTML = '请释放鼠标';
+            };
+            oBox.ondragover = function () {
+                return false;
+            };
+            oBox.ondragleave = function () {
+                oBox.innerHTML = '请将文件拖拽到此区域';
+            };
+            oBox.ondrop = function (ev) {
+                _file = ev.dataTransfer.files[0];
+                oBox.innerHTML = '读取中...';
+                readFile(_file);
+                return false;
+            };
+        };
 
     </script>
 </body>

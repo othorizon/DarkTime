@@ -91,12 +91,16 @@
         <div id="project"></div>
         <p>附加选项</p>
         <div>
-            <input type="checkbox" id="restOp" checked disabled>采用全量导入模式(默认选中，禁止修改)
+            <input type="checkbox" id="restOp" checked disabled>采用全量导入模式(禁止修改)
+            <p style="color:red">全量导入模式下，导入权限点制品时，“是否清空原有权限点？”必须选择是</p>
         </div>
 
         <h1>步骤四：导出权限点制品</h1>
         <div class="mt-sm" style="padding-bottom:40px;">
             <input id="exportFile" type="button" onclick="exportExcel()" value="导出权限点制品" />
+        </div>
+        <div class="mt-sm" style="padding-bottom:40px;" id="error">
+
         </div>
         <div id="verInfo">
             <p style="font-size: small;color: grey;">该工具可以将产品维护的权限点文档处理成导入使用的制品文件，处理内容包括：公式转文本、无用列清理、非套餐权限点过滤、非项目权限点过滤。
@@ -418,8 +422,11 @@
                 //标记为删除的权限点 会清理掉
                 if (restOp) {
                     address = "AE" + i;
-                    if (ws[address] && ws[address]["w"]) {
-                        let val = ws[address]["w"];
+                    if (ws[address] && ws[address]["v"]) {
+                        let val = ws[address]["v"];
+                        if (val === "") {
+                            throw new Error("操作列单元格有空值，取消导出");
+                        }
                         if (val.indexOf("修改") > -1) {
                             //改为新增
                             ws[address]["v"] = '新增';
@@ -430,6 +437,8 @@
                             deleteRow(ws, i - 1);
                             return i;
                         }
+                    } else {
+                        throw new Error("操作列单元格有空值，取消导出");
                     }
                 }
 
@@ -486,7 +495,13 @@
             document.getElementById("exportFile").value = "导出中...";
             // $('#exportFile').val("导出中...");
             //清理非套餐和项目数据
-            let result = delNotIncludeRows();
+            let result;
+            try {
+                result = delNotIncludeRows();
+            } catch (err) {
+                alert(err);
+                result = "cancel";
+            }
             if (result === "cancel") {
                 document.getElementById("exportFile").value = "导出权限点制品";
                 document.getElementById("exportFile").disabled = false;
@@ -496,7 +511,13 @@
             //删除无用的列
             delCols();
             var blob = sheet2blob();
-            openDownloadDialog(blob, dateFormat("YYYYmmddHHMMSS", new Date()) + '-企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
+            var version = _file.name.match(/[\d\.]+/);
+            if (version && version.length > 0) {
+                version = version[0]
+            } else {
+                version = "";
+            }
+            openDownloadDialog(blob, dateFormat("YYYYmmddHHMMSS", new Date()) + '-v' + version + '-企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
 
             //初始化
             readFile(_file);

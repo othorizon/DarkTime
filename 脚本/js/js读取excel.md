@@ -16,7 +16,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>权限点文件生成</title>
+    <title>权限点制品生成</title>
     <style type="text/css">
         #box {
             width: 50%;
@@ -63,6 +63,11 @@
             padding: 20px;
             min-height: 100vh;
         }
+
+        #verInfo {
+            position: absolute;
+            bottom: 2px;
+        }
     </style>
 </head>
 
@@ -84,10 +89,20 @@
         <div id="taocan"></div>
         <p>项目</p>
         <div id="project"></div>
+        <p>附加选项</p>
+        <div>
+            <input type="checkbox" id="restOp" checked disabled>采用全量导入模式(默认选中，禁止修改)
+        </div>
 
         <h1>步骤四：导出权限点制品</h1>
         <div class="mt-sm" style="padding-bottom:40px;">
             <input id="exportFile" type="button" onclick="exportExcel()" value="导出权限点制品" />
+        </div>
+        <div id="verInfo">
+            <p style="font-size: small;color: grey;">该工具可以将产品维护的权限点文档处理成导入使用的制品文件，处理内容包括：公式转文本、无用列清理、非套餐权限点过滤、非项目权限点过滤。
+            </p>
+            <p>@Rizon ver:2022-03-23</p>
+
         </div>
     </div>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -354,7 +369,10 @@
             }
             aLink.dispatchEvent(event);
         }
+        let restOp;
         function delNotIncludeRows() {
+            restOp = $('#restOp').prop('checked');
+            console.log('restOp', restOp);
             var ws = _worksheets["平台权限"];
             if (!selectedTaocan && !confirm("没有选择套餐，将会导出所有权限点，是否继续？")) {
                 return "cancel";
@@ -396,6 +414,25 @@
                         return i;
                     }
                 }
+
+                //标记为删除的权限点 会清理掉
+                if (restOp) {
+                    address = "AE" + i;
+                    if (ws[address] && ws[address]["w"]) {
+                        let val = ws[address]["w"];
+                        if (val.indexOf("修改") > -1) {
+                            //改为新增
+                            ws[address]["v"] = '新增';
+                            delete ws[address]["w"];
+                        } else if (val.indexOf("删除") > -1) {
+                            //删除
+                            console.log("del", val, i - 1);
+                            deleteRow(ws, i - 1);
+                            return i;
+                        }
+                    }
+                }
+
             }
             return -1;
         }
@@ -424,7 +461,25 @@
             });
         });
 
-
+        function dateFormat(fmt, date) {
+            let ret;
+            const opt = {
+                "Y+": date.getFullYear().toString(),        // 年
+                "m+": (date.getMonth() + 1).toString(),     // 月
+                "d+": date.getDate().toString(),            // 日
+                "H+": date.getHours().toString(),           // 时
+                "M+": date.getMinutes().toString(),         // 分
+                "S+": date.getSeconds().toString()          // 秒
+                // 有其他格式化字符需求可以继续添加，必须转化成字符串
+            };
+            for (let k in opt) {
+                ret = new RegExp("(" + k + ")").exec(fmt);
+                if (ret) {
+                    fmt = fmt.replace(ret[1], (ret[1].length == 1) ? (opt[k]) : (opt[k].padStart(ret[1].length, "0")))
+                };
+            };
+            return fmt;
+        }
 
         function exportExcel() {
             document.getElementById("exportFile").disabled = true;
@@ -441,7 +496,7 @@
             //删除无用的列
             delCols();
             var blob = sheet2blob();
-            openDownloadDialog(blob, '企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
+            openDownloadDialog(blob, dateFormat("YYYYmmddHHMMSS", new Date()) + '-企业云-' + selectedProject + '-套餐' + selectedTaocan + '-权限点制品.xlsx');
 
             //初始化
             readFile(_file);

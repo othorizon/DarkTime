@@ -31,6 +31,7 @@
   * [Iterm2 使用](/效率工具/iterm.md)
   * [gitbook](/效率工具/gitbook.md)
   * [github awesome github资源推荐](/效率工具/githubAwesome.md)
+  * [playground 在线试用平台汇总](/效率工具/playground.md)
   * [linux中的office](/效率工具/linux-office.md)
   * [linux screen 工具](/效率工具/screen.md)
   * [简单Mock服务（moco）](/效率工具/mock-server.md)
@@ -43,6 +44,7 @@
 * code_snippets
 * 专题
   * [RESTful API](/专题/restfulapi.md)
+  * [serveless服务](/专题/serveless服务.md)
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
   * [开发中的各种疑难杂症问题](/专题/疑难杂症.md)
   * [spring 最佳实践](/专题/spring-best-practice.md)

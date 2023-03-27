@@ -38,6 +38,7 @@
   * [简单Mock服务（moco）](/效率工具/mock-server.md)
   * [npm](/效率工具/npm.md)
   * [Visual Studio Code 的使用](/效率工具/VSCode.md)
+  * [配置开发环境](/效率工具/dev-env.md)
   * [homebrew的使用](/效率工具/homebrew.md)
   * [汇总](/效率工具/tools.md)
 * tomcat

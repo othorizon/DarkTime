@@ -20,7 +20,7 @@
 * database
   * [druid使用](/database/druid.md)
 * 框架
-  * [项目技术栈收集](/框架/技术栈.md)
+  * [项目拆析](/框架/项目拆析.md)
   * [各种框架和工具](/框架/框架.md)
 * docker
   * [kubernetes](/docker/kubernetes.md)
@@ -50,11 +50,13 @@
   * [搭建私有云主机 折腾记](/专题/搭建私有云主机.md)
   * [开发中的各种疑难杂症问题](/专题/疑难杂症.md)
   * [spring 最佳实践](/专题/spring-best-practice.md)
+  * [LLM 大语言模型](/专题/LLM.md)
   * notelive
     * [文章框架](/专题/notelive/notelive框架.md)
     * [notelive vue版本开发](/专题/notelive/notelive-vue.md)
     * [notelive 开发 札记](/专题/notelive/notelive开发.md)
   * [webrtc技术分析](/专题/webrtc.md)
+  * [反向代理](/专题/proxy.md)
   * spring-cloud
     * [spring boot admin 监控服务](/专题/spring-cloud/spring-boot-admin.md)
     * [Spring Cloud 整理汇总](/专题/spring-cloud/Spring-Cloud.md)
@@ -100,6 +102,7 @@
   * [常用命令](/linux/linux-regular-cmd.md)
   * [linux](/linux/linux.md)
   * [mysqldump脚本](/linux/mysqldump脚本.md)
+  * [代理](/linux/proxy.md)
   * [简易灰度部署脚本 不使用jenkins的纯shell方式](/linux/project_deploy_sh.md)
   * [shell脚本](/linux/shell.md)
   * [附加文档](/linux/linux-addition.md)
